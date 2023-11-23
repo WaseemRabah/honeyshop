@@ -16,9 +16,9 @@ class ProductListView(ListView):
         category_slug = self.kwargs.get('category_slug')
         if category_slug:
             category = get_object_or_404(Category, slug=category_slug)
-            return Product.objects.filter(category=category, stock__gt=0, user=self.request.user)
-        else:
             return Product.objects.filter(stock__gt=0, user=self.request.user)
+        else:
+            return Product.objects.filter(stock__gt=0)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

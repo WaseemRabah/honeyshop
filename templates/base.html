@@ -1,0 +1,43 @@
+<!-- base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Honey Shop{% endblock %}</title>
+    <!-- Add your CSS styles or links to external stylesheets here -->
+</head>
+<body>
+    
+    <!-- Header Section -->
+    <header>
+        <h1>Honey Shop</h1>
+        
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'products:product-list' %}">Products</a></li>
+            <li><a href="{% url 'orders:order-list' %}">Orders</a></li>
+            <li><a href="{% url 'wishlist:wishlist-list' %}">Wishlist</a></li>
+            <!-- Add more navigation items based on your project's structure -->
+        </ul>
+    </nav>
+
+    <!-- Main Content Section -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        
+    </footer>
+
+    
+
+</body>
+</html>

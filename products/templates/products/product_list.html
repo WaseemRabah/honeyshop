@@ -1,26 +1,15 @@
-{% extends 'products/base_generic.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% if category %}{{ category.name }}{% else %}All Products{% endif %}</h1>
-
-    <div class="categories">
-        <h2>Categories</h2>
-        <ul>
-        {% for c in categories %}
-            <li{% if category and category.slug == c.slug %} class="selected"{% endif %}>
-            <a href="{% url 'products:product_list_by_category' c.slug %}">{{ c.name }}</a>
-            </li>
-        {% endfor %}
-        </ul>
-    </div>
-
-    <div class="products">
+    <h2>Product List</h2>
+    <ul>
         {% for product in products %}
-        <div class="product">
-            <h3><a href="{% url 'products:product_detail' product.id product.slug %}">{{ product.name }}</a></h3>
-            <p>{{ product.description }}</p>
+        <li>
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" width="100">
+            <h3>{{ product.name }}</h3>
             <p>Price: ${{ product.price }}</p>
-        </div>
+            <!-- Add more information as needed -->
+        </li>
         {% endfor %}
-    </div>
+    </ul>
 {% endblock %}

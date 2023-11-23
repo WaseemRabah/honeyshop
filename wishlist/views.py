@@ -13,6 +13,11 @@ class WishlistListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return Wishlist.objects.filter(user=self.request.user)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['all_products'] = Product.objects.all()  
+        return context
 
 class WishlistDetailView(LoginRequiredMixin, DetailView):
     model = Wishlist

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}My Wishlists{% endblock %}
+
+{% block content %}
+    <h2>My Wishlists</h2>
+    <ul>
+        {% for wishlist in wishlists %}
+            <li>
+                <a href="{% url 'wishlist:wishlist-detail' pk=wishlist.pk %}">{{ wishlist.name }}</a>
+                <ul>
+                    {% for item in wishlist.wishlistitem_set.all %}
+                        <li>{{ item.product.name }} - {{ item.product.price }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Display all products -->
+    <h2>All Products</h2>
+    <ul>
+        {% for product in all_products %}
+            <li>{{ product.name }} - {{ product.price }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,7 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import View
-from django.views.generic import ListView, DetailView
+from django.views.generic import CreateView, ListView, DetailView
 from .models import Category, Product
+from .forms import ProductForm
+from django.urls import reverse_lazy
+from django.views.generic.edit import UpdateView, DeleteView
+
 
 class ProductListView(ListView):
     template_name = 'products/product_list.html'
@@ -34,3 +38,26 @@ class ProductDetailView(DetailView):
 
     def get_queryset(self):
         return Product.objects.filter(stock__gt=0)
+    
+
+class ProductCreateView(CreateView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'products/product_form.html'
+
+    def form_valid(self, form):
+        # Set the user field to the logged-in user before saving
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+
+class ProductUpdateView(UpdateView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'products/product_form.html'
+
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    success_url = reverse_lazy('products:product_list')  # Redirect to product list after deletion
+    template_name = 'products/product_confirm_delete.html'

@@ -2,6 +2,19 @@
 
 {% block content %}
     <h1>Order Detail</h1>
-    <!-- Your order details and content here -->
-    <a href="{% url 'orders:make-order' %}">Make an Order</a>
+    
+    <h2>Items in Your Order</h2>
+    <ul>
+        {% for item in order.items.all %}
+            <li>
+                {{ item.product.name }} - Quantity: {{ item.quantity }}
+                <!-- Link/button to add to cart -->
+                <a href="{% url 'bag:add-to-cart' product_id=item.product.pk %}">Add to Cart</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+
+    <!-- Link/button to proceed to checkout -->
+    <a href="{% url 'bag:make-order' %}">Proceed to Checkout</a>
 {% endblock %}

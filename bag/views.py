@@ -3,7 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from .contexts import Cart
 from products.models import Product
-from orders.models import Order
+from orders.models import Order, OrderItem
+from django.views.generic import TemplateView
 
 @login_required
 @require_POST
@@ -29,8 +30,29 @@ def view_cart(request):
 @login_required
 def make_order(request):
     cart = Cart(request)
+
+    # Create a new order
     order = Order.objects.create(user=request.user)
+
+    # Move cart items to the order
     for item in cart:
-        order.items.add(item.product, quantity=item.quantity)
+        OrderItem.objects.create(order=order, product=item.product, quantity=item.quantity)
+
+    # Clear the user's cart
     cart.clear()
-    return render(request, 'bag/order_confirmation.html', {'order': order})
+
+    return render(request, 'products/product_list.html', {'order': order})
+
+
+class CartView(TemplateView):
+    template_name = 'bag/cart.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        # Retrieve the user's cart
+        user_cart, created = Cart.objects.get_or_create(user=self.request.user)
+        
+        context['cart_items'] = user_cart.items.all()
+
+        return context

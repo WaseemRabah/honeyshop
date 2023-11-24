@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'orders',
     'wishlist',
     'home',
+    'bag',
+    'checkout',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -143,3 +145,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'EMAIL_HOST_USER'
 EMAIL_HOST_PASSWORD = 'EMAIL_HOST_PASSWORD'
+
+CART_SESSION_ID = 'cart'

@@ -1,0 +1,12 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+    <h1>Checkout</h1>
+    
+    <!-- Your checkout content here -->
+    
+    <form method="post" action="{% url 'checkout' %}">
+        {% csrf_token %}
+        <button type="submit">Place Order</button>
+    </form>
+{% endblock %}

@@ -16,6 +16,8 @@
                             <a href="{% url 'cart:add-to-cart' product_id=item.product.pk %}">Add to Cart</a>
                             <!-- Link/button to remove from cart -->
                             <a href="{% url 'cart:remove-from-cart' product_id=item.product.pk %}">Remove from Cart</a>
+                            <!-- Link/button to add to cart -->
+                            <a href="{% url 'bag:add-to-cart' product_id=item.product.pk %}">Add to Cart</a>
                         </li>
                     {% endfor %}
                 </ul>

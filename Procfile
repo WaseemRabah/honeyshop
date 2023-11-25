@@ -1,1 +1,1 @@
-web : gunicorn honeyshop.wsgi:application
+web : gunicorn ecommerceproject.wsgi:application

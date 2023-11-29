@@ -9,8 +9,8 @@ class Category(models.Model):
     def __str__(self):
         return self.name
     
-class Meta:
-    app_label = 'products'
+    class Meta:
+        app_label = 'products'
 
 class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)

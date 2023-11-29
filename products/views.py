@@ -7,6 +7,17 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import UpdateView, DeleteView
 
 
+def all_products(request):
+    """ A view to show all products, including sorting and search queries """
+
+    products = Product.objects.all()
+
+    context = {
+        'products': products,
+    }
+
+    return render(request, 'products/products.html', context)
+
 class ProductListView(ListView):
     template_name = 'products/product_list.html'
     context_object_name = 'products'
@@ -35,6 +46,7 @@ class ProductDetailView(DetailView):
     template_name = 'products/product_detail.html'
     model = Product
     context_object_name = 'product'
+    slug_url_kwarg = 'product_slug'
 
     def get_queryset(self):
         return Product.objects.filter(stock__gt=0)

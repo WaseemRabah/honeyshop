@@ -7,6 +7,7 @@ from .models import Category, Product
 from .forms import ProductForm
 from django.urls import reverse_lazy
 from django.views.generic.edit import UpdateView, DeleteView
+from django.db.models.functions import Lower 
 
 
 def all_products(request):

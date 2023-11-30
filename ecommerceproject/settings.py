@@ -75,6 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'bag.contexts.bag_contents',
             ],
         },
     },
@@ -172,3 +173,5 @@ EMAIL_HOST_PASSWORD = 'EMAIL_HOST_PASSWORD'
 
 CART_SESSION_ID = 'cart'
 
+FREE_DELIVERY_THRESHOLD = 50
+STANDARD_DELIVERY_PERCENTAGE = 10

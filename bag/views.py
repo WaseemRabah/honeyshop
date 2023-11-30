@@ -1,10 +1,19 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
-from .contexts import Cart
+from .contexts import Cart, bag_contents
 from products.models import Product
 from orders.models import Order, OrderItem
 from django.views.generic import TemplateView
+
+
+
+@login_required
+def view_cart(request):
+    cart = Cart(request)
+    context = bag_contents(cart)
+    return render(request, 'bag/cart.html', context)
+
 
 @login_required
 @require_POST
@@ -21,7 +30,6 @@ def add_to_bag(request, item_id):
         bag[item_id] = quantity
 
     request.session['bag'] = bag
-    print(request.session['bag'])
     return redirect(redirect_url)
 
 
@@ -62,8 +70,8 @@ class CartView(TemplateView):
         context = super().get_context_data(**kwargs)
 
         # Retrieve the user's cart
-        user_cart, created = Cart.objects.get_or_create(user=self.request.user)
+        user_cart = Cart(self.request)
         
-        context['cart_items'] = user_cart.items.all()
+        context['cart_items'] = user_cart.cart.values()
 
         return context

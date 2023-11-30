@@ -1,66 +1,83 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
+from django.views.generic import TemplateView, View
+from django.urls import reverse
 from .contexts import Cart, bag_contents
 from products.models import Product
 from orders.models import Order, OrderItem
-from django.views.generic import TemplateView
+
+class DisplayBagView(TemplateView):
+    template_name = 'bag/cart.html'
+
+    def get(self, request, *args, **kwargs):
+        """ A view that renders the bag contents page """
+        return self.render_to_response({})
 
 
+class AddToBagView(View):
+    def post(self, request, item_id):
+        """ Add a quantity of the specified product to the shopping bag """
+        quantity = int(request.POST.get('quantity'))
+        redirect_url = request.POST.get('redirect_url')
+        bag = request.session.get('bag', {})
 
-@login_required
-def view_cart(request):
-    cart = Cart(request)
-    context = bag_contents(cart)
-    return render(request, 'bag/cart.html', context)
+        if item_id in list(bag.keys()):
+            bag[item_id] += quantity
+        else:
+            bag[item_id] = quantity
 
-
-@login_required
-@require_POST
-def add_to_bag(request, item_id):
-    """ Add a quantity of the specified product to the shopping bag """
-
-    quantity = int(request.POST.get('quantity'))
-    redirect_url = request.POST.get('redirect_url')
-    bag = request.session.get('bag', {})
-
-    if item_id in list(bag.keys()):
-        bag[item_id] += quantity
-    else:
-        bag[item_id] = quantity
-
-    request.session['bag'] = bag
-    return redirect(redirect_url)
+        request.session['bag'] = bag
+        return redirect(redirect_url)
 
 
-@login_required
-@require_POST
-def remove_from_cart(request, product_id):
-    cart = Cart(request)
-    product = get_object_or_404(Product, id=product_id)
-    cart.remove(product)
-    return redirect('bag:cart')
+class AdjustBagView(View):
+    def post(self, request, item_id):
+        """Adjust the quantity of the specified product to the specified amount"""
+        quantity = int(request.POST.get('quantity'))
+        size = None
+        if 'product_size' in request.POST:
+            size = request.POST['product_size']
+        bag = request.session.get('bag', {})
 
-@login_required
-def view_cart(request):
-    cart = Cart(request)
-    return render(request, 'bag/cart.html', {'cart': cart})
+        if size:
+            if quantity > 0:
+                bag[item_id]['items_by_size'][size] = quantity
+            else:
+                del bag[item_id]['items_by_size'][size]
+                if not bag[item_id]['items_by_size']:
+                    bag.pop(item_id)
+        else:
+            if quantity > 0:
+                bag[item_id] = quantity
+            else:
+                bag.pop(item_id)
 
-@login_required
-def make_order(request):
-    cart = Cart(request)
+        request.session['bag'] = bag
+        return redirect(reverse('bag:display_bag'))
 
-    # Create a new order
-    order = Order.objects.create(user=request.user)
 
-    # Move cart items to the order
-    for item in cart:
-        OrderItem.objects.create(order=order, product=item.product, quantity=item.quantity)
+class RemoveFromBagView(View):
+    def post(self, request, item_id):
+        """Remove the item from the shopping bag"""
+        try:
+            size = None
+            if 'product_size' in request.POST:
+                size = request.POST['product_size']
+            bag = request.session.get('bag', {})
 
-    # Clear the user's cart
-    cart.clear()
+            if size:
+                del bag[item_id]['items_by_size'][size]
+                if not bag[item_id]['items_by_size']:
+                    bag.pop(item_id)
+            else:
+                bag.pop(item_id)
 
-    return render(request, 'products/product_list.html', {'order': order})
+            request.session['bag'] = bag
+            return HttpResponse(status=200)
+
+        except Exception as e:
+            return HttpResponse(status=500)
 
 
 class CartView(TemplateView):
@@ -68,10 +85,7 @@ class CartView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
         # Retrieve the user's cart
         user_cart = Cart(self.request)
-        
         context['cart_items'] = user_cart.cart.values()
-
         return context

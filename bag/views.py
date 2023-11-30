@@ -27,6 +27,7 @@ class AddToBagView(View):
 
         if item_id in list(bag.keys()):
             bag[item_id] += quantity
+            messages.success(request, f'Updated {product.name} quantity to {bag[item_id]}')
         else:
             bag[item_id] = quantity
             messages.success(request, f'Added {product.name} to your bag')
@@ -49,13 +50,16 @@ class AdjustBagView(View):
             if size:
                 if quantity > 0:
                     bag[item_id]['items_by_size'][size] = quantity
+                    messages.success(request, f'Updated {product.name} quantity to {bag[item_id]}')
                 else:
                     del bag[item_id]['items_by_size'][size]
                     if not bag[item_id]['items_by_size']:
                         bag.pop(item_id)
+                        messages.success(request, f'Removed {product.name} from your bag')
             else:
                 if quantity > 0:
                     bag[item_id] = quantity
+                    messages.success(request, f'Updated {product.name} quantity to {bag[item_id]}')
                 else:
                     bag.pop(item_id)
                     messages.success(request, f'Removed {product.name} from your bag')
@@ -75,19 +79,24 @@ class RemoveFromBagView(View):
             size = None
             if 'product_size' in request.POST:
                 size = request.POST['product_size']
+
             bag = request.session.get('bag', {})
+            product = get_object_or_404(Product, pk=item_id)  # Add this line
 
             if size:
                 del bag[item_id]['items_by_size'][size]
                 if not bag[item_id]['items_by_size']:
                     bag.pop(item_id)
+                    messages.success(request, f'Removed size {size.upper()} {product.name} from your bag')
             else:
                 bag.pop(item_id)
+                messages.success(request, f'Removed {product.name} from your bag')
 
             request.session['bag'] = bag
             return HttpResponse(status=200)
 
         except Exception as e:
+            messages.error(request, f'Error removing item: {e}')
             return HttpResponse(status=500)
 
 

@@ -6,6 +6,8 @@ from django.urls import reverse
 from .contexts import Cart, bag_contents
 from products.models import Product
 from orders.models import Order, OrderItem
+from django.contrib import messages
+
 
 class DisplayBagView(TemplateView):
     template_name = 'bag/cart.html'
@@ -18,6 +20,7 @@ class DisplayBagView(TemplateView):
 class AddToBagView(View):
     def post(self, request, item_id):
         """ Add a quantity of the specified product to the shopping bag """
+        product = Product.objects.get(pk=item_id)
         quantity = int(request.POST.get('quantity'))
         redirect_url = request.POST.get('redirect_url')
         bag = request.session.get('bag', {})
@@ -26,6 +29,7 @@ class AddToBagView(View):
             bag[item_id] += quantity
         else:
             bag[item_id] = quantity
+            messages.success(request, f'Added {product.name} to your bag')
 
         request.session['bag'] = bag
         return redirect(redirect_url)
@@ -33,28 +37,35 @@ class AddToBagView(View):
 
 class AdjustBagView(View):
     def post(self, request, item_id):
-        """Adjust the quantity of the specified product to the specified amount"""
-        quantity = int(request.POST.get('quantity'))
-        size = None
-        if 'product_size' in request.POST:
-            size = request.POST['product_size']
-        bag = request.session.get('bag', {})
+        try:
+            product = get_object_or_404(Product, pk=item_id)
+            quantity = int(request.POST.get('quantity'))
+            size = None
+            if 'product_size' in request.POST:
+                size = request.POST['product_size']
 
-        if size:
-            if quantity > 0:
-                bag[item_id]['items_by_size'][size] = quantity
+            bag = request.session.get('bag', {})
+
+            if size:
+                if quantity > 0:
+                    bag[item_id]['items_by_size'][size] = quantity
+                else:
+                    del bag[item_id]['items_by_size'][size]
+                    if not bag[item_id]['items_by_size']:
+                        bag.pop(item_id)
             else:
-                del bag[item_id]['items_by_size'][size]
-                if not bag[item_id]['items_by_size']:
+                if quantity > 0:
+                    bag[item_id] = quantity
+                else:
                     bag.pop(item_id)
-        else:
-            if quantity > 0:
-                bag[item_id] = quantity
-            else:
-                bag.pop(item_id)
+                    messages.success(request, f'Removed {product.name} from your bag')
 
-        request.session['bag'] = bag
-        return redirect(reverse('bag:display_bag'))
+            request.session['bag'] = bag
+            return redirect(reverse('bag:display_bag'))
+
+        except Exception as e:
+            messages.error(request, 'An error occurred. Please try again.')
+            return redirect(reverse('bag:display_bag'))
 
 
 class RemoveFromBagView(View):

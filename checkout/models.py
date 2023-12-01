@@ -61,7 +61,9 @@ class OrderLineItem(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     
     def total_price(self):
-        return self.quantity * self.price
+        if self.price is not None and self.quantity is not None:
+            return self.quantity * self.price
+        return 0
 
     def __str__(self):
         return f"{self.quantity} x {self.product_name} in Order {self.order.order_number}"

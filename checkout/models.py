@@ -23,6 +23,7 @@ class Order(models.Model):
     # Shipping Address
     street_address = models.CharField(max_length=255)
     postal_code = models.CharField(max_length=20)
+    county = models.CharField(max_length=80, null=True, blank=True)
     city = models.CharField(max_length=100)
     country = models.CharField(max_length=100)
     

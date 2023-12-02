@@ -1,17 +1,18 @@
+# models.py
+
 import uuid
 from django.db import models
 from django.contrib.auth.models import User
-from products.models import Product
-from django.db.models import Sum
+from django.db.models import Sum, F, DecimalField
 from django.conf import settings
 
 
 class Order(models.Model):
-    #order_number = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+    order_number = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_completed = models.BooleanField(default=False)
-    total_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    total_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
     order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     
@@ -38,7 +39,11 @@ class Order(models.Model):
         Update grand total each time a line item is added,
         accounting for delivery costs.
         """
-        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum']
+        total_price_sum = self.orderlineitem_set.annotate(
+            total_price=Sum(F('quantity') * F('price'), output_field=DecimalField())
+        ).aggregate(Sum('total_price'))['total_price__sum'] or 0
+
+        self.order_total = total_price_sum
         if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
             self.delivery_cost = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
         else:
@@ -52,7 +57,8 @@ class Order(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.order_number
+        return str(self.order_number)
+
 
 
 class OrderLineItem(models.Model):

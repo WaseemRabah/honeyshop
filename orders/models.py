@@ -21,6 +21,7 @@ class Order(models.Model):
         timestamp_str = self.created_at.strftime('%Y%m%d%H%M%S')
         user_id_str = str(self.user.id).zfill(5) 
         return f'{timestamp_str}-{user_id_str}'
+    
 
 def generate_default_order_number(apps, schema_editor):
     Order = apps.get_model('orders', 'Order')

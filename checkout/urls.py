@@ -1,8 +1,7 @@
 from django.urls import path
-from .views import CheckoutView
-
-app_name = 'checkout'
+from .views import checkout, checkout_success
 
 urlpatterns = [
-    path('checkout/', CheckoutView.as_view(), name='checkout')
+    path('checkout/', checkout, name='checkout'),
+    path('checkout/success/<uuid:order_number>/', checkout_success, name='checkout_success'),
 ]

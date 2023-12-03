@@ -21,11 +21,8 @@ SECRET_KEY = 'KEY'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = development
 
-if development:
-    ALLOWED_HOSTS = ['127.0.0.1']
 
-else:
-    ALLOWED_HOSTS = ['honeyshop-58be54febc57.herokuapp.com']
+ALLOWED_HOSTS = ['honeyshop-58be54febc57.herokuapp.com']
 
 
 # Application definition

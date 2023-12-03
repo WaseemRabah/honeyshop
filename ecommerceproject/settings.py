@@ -25,7 +25,7 @@ if development:
     ALLOWED_HOSTS = ['127.0.0.1']
 
 else:
-    ALLOWED_HOSTS = ['honeyshop-ffba4d388b9e.herokuapp.com']
+    ALLOWED_HOSTS = ['honeyshop-58be54febc57.herokuapp.com']
 
 
 # Application definition

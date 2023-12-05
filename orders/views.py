@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Order, OrderItem
-from wishlist.models import Wishlist, WishlistItem
+from wishlist.models import Wishlist
 from django.db import transaction
 
 

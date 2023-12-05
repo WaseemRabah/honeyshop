@@ -22,7 +22,7 @@ SECRET_KEY = 'KEY'
 DEBUG = development
 
 
-ALLOWED_HOSTS = ['honeyshop-58be54febc57.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['honeyshop-58be54febc57.herokuapp.com', '127.0.0.1', 'localhost', 'localhost:8000']
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'home',
     'bag',
     'checkout',
+    'newsletter',
 
     
     # Other

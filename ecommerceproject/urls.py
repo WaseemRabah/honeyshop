@@ -14,6 +14,7 @@ urlpatterns = [
     path('', include('home.urls')),
     path('accounts/', include('allauth.urls')),
     path('accounts/', include('allauth.account.urls')),
+    path('newsletter/', include('newsletter.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'ecommerceproject.views.handler404'

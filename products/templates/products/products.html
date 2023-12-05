@@ -51,11 +51,11 @@
                             <div class="card h-100 border-0">
                                 {% if product.image %}
                                 <a href="{% url 'products:product_detail' product_slug=product.slug %}">
-                                    <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                    <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}" aria-label="product-image">
                                 </a>
                                 {% else %}
                                 <a href="">
-                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}" aria-label="product-image">
                                 </a>
                                 {% endif %}
                                 <div class="card-body pb-0">

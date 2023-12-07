@@ -1,14 +1,75 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>Wishlist</h2>
-    {% if wishlist_items %}
-        <ul>
-            {% for item in wishlist_items %}
-                <li>{{ item.product.name }} - <a href="{% url 'remove_from_wishlist' wishlist_item_id=item.id %}">Remove</a></li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>Your wishlist is empty.</p>
-    {% endif %}
+<style>
+    body {
+        padding-top: 80px;
+        background: none;
+    }
+
+    .product-item {
+        border: 1px solid #ddd;
+        padding: 15px;
+        margin: 15px;
+        text-align: center;
+    }
+
+    .product-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .remove-button {
+        margin-top: 10px;
+    }
+</style>
+
+    <div class="container mt-5 pt-5">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <h2>Wishlist</h2>
+        {% if wishlist_items %}
+            <div class="row">
+                {% for item in wishlist_items %}
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                        <div class="card h-100 border-0">
+                            {% if item.product.image %}
+                                <a href="{% url 'products:product_detail' product_slug=item.product.slug %}">
+                                    <img class="card-img-top img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}" aria-label="product-image">
+                                </a>
+                            {% else %}
+                                <a href="">
+                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}" aria-label="product-image">
+                                </a>
+                            {% endif %}
+                            <div class="card-body pb-0">
+                                <p class="mb-0">{{ item.product.name }}</p>
+                            </div>
+                            <div class="card-footer bg-white pt-0 border-0 text-left">
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="lead mb-0 text-left font-weight-bold">${{ item.product.price }}</p>
+                                        {% if item.product.rating %}
+                                            <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ item.product.rating }} / 5</small>
+                                        {% else %}
+                                            <small class="text-muted">No Rating</small>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white border-0 text-center">
+                                <a href="{% url 'remove_from_wishlist' wishlist_item_id=item.id %}" class="btn btn-danger btn-sm">Remove</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>Your wishlist is empty.</p>
+        {% endif %}
+    </div>
 {% endblock %}

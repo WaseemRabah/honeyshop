@@ -1,34 +1,135 @@
-{% extends "account/base_entrance.html" %}
 {% load i18n %}
-{% load allauth account socialaccount %}
-{% block head_title %}
-    {% trans "Sign In" %}
-{% endblock head_title %}
+{% load crispy_forms_tags %}
+
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f4;
+    }
+
+    .container {
+        background-color: #ffffff;
+        padding: 80px 20px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #333333;
+    }
+
+    p {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    form {
+        margin-top: 40px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #333333;
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+    }
+
+    button {
+        width: 50%;
+        margin-left: 25%;
+        padding: 10px;
+        font-size: 16px;
+        color: #ffffff;
+        background-color: black;
+        border: 1px solid black;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+    .btn-sign-up {
+        width: 10%;  
+        padding: 5px;  
+        font-size: 14px;  
+        color: #ffffff;
+        background-color: black;
+        border: 1px solid black;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+        line-height: 20px;
+    }
+
+    .btn-sign-up:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+    .social-account {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .btn-back-home {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 4px;
+        color: #ffffff;
+        background-color: black;
+        border: 1px solid black;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+        margin-right: 10px;
+        text-decoration: none;
+        display: block; 
+        text-align: center;
+        line-height: 40px;
+    }
+
+    .btn-back-home:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+</style>
+
 {% block content %}
-    {% element h1 %}
-        {% trans "Sign In" %}
-    {% endelement %}
-    <p>
-        {% blocktrans %}If you have not created an account yet, then please
-    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
-    </p>
-    {% url 'account_login' as login_url %}
-    {% element form form=form method="post" action=login_url tags="entrance,login" %}
-        {% slot body %}
-            {% csrf_token %}
-            {% element fields form=form unlabeled=True %}
-            {% endelement %}
-            {% if redirect_field_value %}
-                <input type="hidden"
-                       name="{{ redirect_field_name }}"
-                       value="{{ redirect_field_value }}" />
-            {% endif %}
-        {% endslot %}
-        {% slot actions %}
-            {% element button type="submit" tags="prominent,login" %}
-                {% trans "Sign In" %}
-            {% endelement %}
-        {% endslot %}
-    {% endelement %}
-    {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1>{% trans "Sign In" %}</h1>
+                <p>{% blocktrans %}If you have not created an account yet, then please{% endblocktrans %}
+                <a href="{% url 'account_signup' %}" class="btn btn-sign-up">{% trans "sign up" %}</a>
+                {% blocktrans %}first.{% endblocktrans %}</p>
+
+                <form method="post" action="{% url 'account_login' %}" class="login">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit">{% trans "Sign In" %}</button>
+                </form>
+                <a href="{% url 'home' %}" class="btn btn-back-home">Back to Home Page</a>
+            </div>
+        </div>
+    </div>
 {% endblock content %}

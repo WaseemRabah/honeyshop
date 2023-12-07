@@ -4,24 +4,115 @@
     {% trans "Sign Out" %}
 {% endblock head_title %}
 {% block content %}
-    {% element h1 %}
-        {% trans "Sign Out" %}
-    {% endelement %}
-    <p>{% trans 'Are you sure you want to sign out?' %}</p>
-    {% url 'account_logout' as action_url %}
-    {% element form method="post" action=action_url no_visible_fields=True %}
-        {% slot body %}
-            {% csrf_token %}
-            {% if redirect_field_value %}
-                <input type="hidden"
-                       name="{{ redirect_field_name }}"
-                       value="{{ redirect_field_value }}" />
-            {% endif %}
-        {% endslot %}
-        {% slot actions %}
-            {% element button type="submit" %}
-                {% trans 'Sign Out' %}
-            {% endelement %}
-        {% endslot %}
-    {% endelement %}
+<style>
+
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f4;
+    }
+
+    .container {
+        background-color: #ffffff;
+        padding: 80px 20px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #333333;
+    }
+
+    p {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    form {
+        margin-top: 40px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #333333;
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+    }
+
+    button {
+        width: 50%;
+        margin-left: 25%;
+        padding: 10px;
+        font-size: 16px;
+        color: #ffffff;
+        background-color: black;
+        border: 1px solid black;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+    .btn-back-home {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 4px;
+        color: #ffffff;
+        background-color: black;
+        border: 1px solid black;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+        margin-right: 10px;
+        text-decoration: none;
+        display: block; 
+        text-align: center;
+        line-height: 40px;
+    }
+
+    .btn-back-home:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+</style>
+
+{% element h1 %}
+    {% trans "Sign Out" %}
+{% endelement %}
+<p>{% trans 'Are you sure you want to sign out?' %}</p>
+{% url 'account_logout' as action_url %}
+{% element form method="post" action=action_url no_visible_fields=True %}
+    {% slot body %}
+        {% csrf_token %}
+        {% if redirect_field_value %}
+            <input type="hidden"
+                name="{{ redirect_field_name }}"
+                value="{{ redirect_field_value }}" />
+        {% endif %}
+    {% endslot %}
+    {% slot actions %}
+        {% element button type="submit" %}
+            {% trans 'Sign Out' %}
+        {% endelement %}
+    {% endslot %}
+{% endelement %}
+
+<a href="{% url 'home' %}" class="btn btn-back-home">{% trans 'Back to Home Page' %}</a>
 {% endblock content %}

@@ -4,29 +4,129 @@
     {% trans "Signup" %}
 {% endblock head_title %}
 {% block content %}
-    {% element h1 %}
-        {% trans "Sign Up" %}
-    {% endelement %}
-    <p>
-        {% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
-    </p>
-    {% url 'account_signup' as action_url %}
-    {% element form form=form method="post" action=action_url tags="entrance,signup" %}
-        {% slot body %}
-            {% csrf_token %}
-            {% element fields form=form unlabeled=True %}
-            {% endelement %}
-            {% if redirect_field_value %}
-                <input type="hidden"
-                       name="{{ redirect_field_name }}"
-                       value="{{ redirect_field_value }}" />
-            {% endif %}
-        {% endslot %}
-        {% slot actions %}
-            {% element button tags="prominent,signup" type="submit" %}
-                {% trans "Sign Up" %}
-            {% endelement %}
-        {% endslot %}
-    {% endelement %}
-    {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f4;
+    }
+
+    .container {
+        background-color: #ffffff;
+        padding: 80px 20px;
+        margin-bottom: 50px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #333333;
+    }
+
+    p {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    form {
+        margin-top: 40px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #333333;
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+    }
+
+    button {
+        width: 40%; /* Adjusted width */
+        margin-left: 30%; /* Adjusted margin */
+        padding: 8px; /* Adjusted padding */
+        font-size: 14px; /* Adjusted font size */
+        color: #ffffff;
+        background-color: black;
+        border: 1px solid black;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+    .btn-sign-up {
+        width: 10%;
+        padding: 5px;
+        font-size: 14px;
+        color: #ffffff;
+        background-color: black;
+        border: 1px solid black;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+        line-height: 20px;
+    }
+
+    .btn-sign-up:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+    .btn-back-home {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 4px;
+        color: #ffffff;
+        background-color: black;
+        border: 1px solid black;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+        margin-right: 10px;
+        text-decoration: none;
+        display: block; 
+        text-align: center;
+        line-height: 40px;
+    }
+
+    header nav ul {
+        display: none;
+    }
+
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1>{% trans "Sign Up" %}</h1>
+            <p>{% trans "Already have an account? Then please" %} <a href="{{ login_url }}" class="btn btn-sign-up">{% trans "sign in" %}</a></p>
+
+            {% url 'account_signup' as action_url %}
+            <form method="post" action="{{ action_url }}" class="login">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit">{% trans "Sign Up" %}</button>
+            </form>
+            <a href="{% url 'home' %}" class="btn btn-back-home">Back to Home Page</a>
+        </div>
+    </div>
+</div>
 {% endblock content %}

@@ -136,7 +136,12 @@
 
         {% block content %}
         {% endblock %}
-
+        <footer>
+                <!--add the social media links with icons-->
+                <div class="footer">
+                    <a href="{% url 'subscribe' %}" class="ui-btn">Subscribe for our Newletter</a>
+                </div>
+        </footer>
         {% block postloadjs %}
         <script type="text/javascript">
             $('.toast').toast('show');

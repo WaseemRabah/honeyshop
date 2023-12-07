@@ -16,6 +16,7 @@ class SubscribeView(View):
             form.save()
             return redirect('success_page') 
         return render(request, self.template_name, {'form': form})
+    
 
 class SuccessPageView(View):
     template_name = 'newsletter/success_page.html'

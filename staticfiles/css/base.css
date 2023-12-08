@@ -163,6 +163,21 @@ body {
     overflow-y: auto;
 }
 
+.footer {
+    height: 1.5em;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(18, 17, 17);
+    color: white;
+    text-align: center;
+}
+
+.footer a{
+    color: aliceblue;
+}
+
 
 /* -------------------------------- Media Queries */
 

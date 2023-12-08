@@ -14,13 +14,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-
-DEBUG = True
-
-
+DEBUG = development
 
 
 ALLOWED_HOSTS = ['honeyshop-58be54febc57.herokuapp.com', '127.0.0.1', 'localhost', 'localhost:8000']
@@ -120,7 +117,7 @@ else:
         'default' : dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -158,6 +155,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
@@ -189,10 +189,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER') 
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER =('EMAIL_HOST_USER') 
+EMAIL_HOST_PASSWORD =('EMAIL_HOST_PASSWORD')
 
-DEFAULT_FROM_EMAIL = 'waseem.96.ra@gmail.com'
+DEFAULT_FROM_EMAIL = 'noreply<no_reply@domain.com>'
 
 CART_SESSION_ID = 'cart'
 

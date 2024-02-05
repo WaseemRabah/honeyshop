@@ -9,7 +9,7 @@ if os.path.exists('env.py'):
     import env
 
 
-DEVELOPMENT = os.environ.get("DEVELOPMENT")
+DEVELOPMENT = True
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -167,9 +167,9 @@ cloudinary.config(
 """
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get("CLOUDINARY_CLOUD_NAME"),
-    'API_KEY': os.environ.get("CLOUDINARY_API_KEY"),
-    'API_SECRET': os.environ.get("CLOUDINARY_API_SECRET"),
+    'CLOUD_NAME': 'doaqzwmlv',
+    'API_KEY': '218989358578492',
+    'API_SECRET': 'IV_X8CaFw80XjHTdExu1LcuUKYM',
 }
 
 
@@ -215,8 +215,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+EMAIL_HOST_USER = 'waseem.96.ra@gmail.com'
+EMAIL_HOST_PASSWORD = 'rdob zwvt roxp fkmy'
 
 DEFAULT_FROM_EMAIL = 'noreply<no_reply@domain.com>'
 
@@ -226,7 +226,7 @@ CART_SESSION_ID = 'cart'
 FREE_DELIVERY_THRESHOLD = 50
 STANDARD_DELIVERY_PERCENTAGE = 10
 STRIPE_CURRENCY = 'usd'
-STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY")
-STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
+STRIPE_PUBLIC_KEY = 'pk_test_51OIVsBAdWnDYkhgpGaz1IaZCbt3liEImkER1rWpa3ObJp4ykJxSnREprsRNXt8ZIerOcnGcZ2LN1wfX6eDdxdFOi00OfOZvahz'
+STRIPE_SECRET_KEY = 'sk_test_51OIVsBAdWnDYkhgpuf25MQZlM12dAML4v7sr9XnInxsybteuzA08X7HqMmJXVKtqa4raD0g0xTWB4936Co8HEpwM00pjA3UnsT'
 STRIPE_WH_SECRET = ''
 

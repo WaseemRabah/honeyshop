@@ -122,7 +122,7 @@
             {% url 'account_signup' as action_url %}
             <form method="post" action="{{ action_url }}" class="login">
                 {% csrf_token %}
-                {{ form|crispy }}
+                {{ form.as_p }} {# Renders the form fields as paragraphs #}
                 <button type="submit">{% trans "Sign Up" %}</button>
             </form>
             <a href="{% url 'home' %}" class="btn btn-back-home">Back to Home Page</a>

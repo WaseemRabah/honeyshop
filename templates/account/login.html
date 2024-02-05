@@ -124,9 +124,9 @@
                 {% blocktrans %}first.{% endblocktrans %}</p>
 
                 <form method="post" action="{% url 'account_login' %}" class="login">
-                {% csrf_token %}
-                {{ form|crispy }}
-                <button type="submit">{% trans "Sign In" %}</button>
+                    {% csrf_token %}
+                    {{ form.as_p }} {# Renders the form fields as paragraphs #}
+                    <button type="submit">{% trans "Sign In" %}</button>
                 </form>
                 <a href="{% url 'home' %}" class="btn btn-back-home">Back to Home Page</a>
             </div>

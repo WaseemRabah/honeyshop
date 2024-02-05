@@ -1,23 +1,30 @@
-from pathlib import Path
 import os
+from pathlib import Path
 import dj_database_url
-if os.path.isfile('env.py'):
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+if os.path.exists('env.py'):
     import env
 
-development = os.environ.get('DEVELOPMENT', True)
+
+DEVELOPMENT = 'DEVELOPMENT'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'KEY'
+SECRET_KEY = 'SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = development
+DEBUG = 'DEBUG'
+
+
 
 
 ALLOWED_HOSTS = ['honeyshop-58be54febc57.herokuapp.com', '127.0.0.1', 'localhost', 'localhost:8000']
@@ -43,6 +50,10 @@ INSTALLED_APPS = [
     
     # Other
     'crispy_forms',
+    'whitenoise.runserver_nostatic',
+    'cloudinary_storage',
+    'cloudinary',
+    'bootstrap4',
 
     'allauth',
     'allauth.account',
@@ -59,6 +70,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'ecommerceproject.urls'
@@ -71,6 +83,7 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
             os.path.join(BASE_DIR, 'templates', 'allauth'),
+            os.path.join(BASE_DIR, 'env', 'Lib', 'site-packages', 'django-bootstrap4', 'bootstrap4', 'templates', 'bootstrap4'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -104,20 +117,14 @@ AUTHENTICATION_BACKENDS = [
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-if development:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+}
 
-else:
-    DATABASES = {
-        'default' : dj_database_url.parse(os.environ.get('DATABASE_URL'))
-    }
-
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -150,17 +157,36 @@ USE_I18N = True
 USE_TZ = True
 
 
+# Cloudinary settings
+"""
+cloudinary.config(
+    cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.environ.get("CLOUDINARY_API_KEY"),
+    api_secret=os.environ.get("CLOUDINARY_API_SECRET"),
+)
+"""
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'CLOUDINARY_CLOUD_NAME',
+    'API_KEY': 'CLOUDINARY_API_KEY',
+    'API_SECRET': 'CLOUDINARY_API_SECRET',
+}
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
+    os.path.join(BASE_DIR, 'static'),
 ]
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -177,7 +203,7 @@ SITE_ID = 1
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
 ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = '/login/'
-ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = None
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = '/login/'
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
@@ -189,8 +215,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER =('EMAIL_HOST_USER') 
-EMAIL_HOST_PASSWORD =('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = 'EMAIL_HOST_USER'
+EMAIL_HOST_PASSWORD = 'EMAIL_HOST_PASSWORD'
 
 DEFAULT_FROM_EMAIL = 'noreply<no_reply@domain.com>'
 
@@ -200,6 +226,7 @@ CART_SESSION_ID = 'cart'
 FREE_DELIVERY_THRESHOLD = 50
 STANDARD_DELIVERY_PERCENTAGE = 10
 STRIPE_CURRENCY = 'usd'
-STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
-STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
+STRIPE_PUBLIC_KEY = 'STRIPE_PUBLIC_KEY'
+STRIPE_SECRET_KEY = 'STRIPE_SECRET_KEY'
 STRIPE_WH_SECRET = ''
+

@@ -9,7 +9,7 @@ if os.path.exists('env.py'):
     import env
 
 
-DEVELOPMENT = 'DEVELOPMENT'
+DEVELOPMENT = os.environ.get("DEVELOPMENT")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -19,10 +19,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'SECRET_KEY'
+SECRET_KEY = 'deg7hcu6bllh_uu1ag46a1ntcdw=$m&6$skmx+5#n)a2!!v#ed'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEBUG'
+DEBUG = True
 
 
 
@@ -167,9 +167,9 @@ cloudinary.config(
 """
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'CLOUDINARY_CLOUD_NAME',
-    'API_KEY': 'CLOUDINARY_API_KEY',
-    'API_SECRET': 'CLOUDINARY_API_SECRET',
+    'CLOUD_NAME': os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    'API_KEY': os.environ.get("CLOUDINARY_API_KEY"),
+    'API_SECRET': os.environ.get("CLOUDINARY_API_SECRET"),
 }
 
 
@@ -215,8 +215,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'EMAIL_HOST_USER'
-EMAIL_HOST_PASSWORD = 'EMAIL_HOST_PASSWORD'
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 
 DEFAULT_FROM_EMAIL = 'noreply<no_reply@domain.com>'
 
@@ -226,7 +226,7 @@ CART_SESSION_ID = 'cart'
 FREE_DELIVERY_THRESHOLD = 50
 STANDARD_DELIVERY_PERCENTAGE = 10
 STRIPE_CURRENCY = 'usd'
-STRIPE_PUBLIC_KEY = 'STRIPE_PUBLIC_KEY'
-STRIPE_SECRET_KEY = 'STRIPE_SECRET_KEY'
+STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY")
+STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
 STRIPE_WH_SECRET = ''
 

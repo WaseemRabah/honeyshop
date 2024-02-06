@@ -5,6 +5,10 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 if os.path.exists('env.py'):
     import env
 
@@ -19,10 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'deg7hcu6bllh_uu1ag46a1ntcdw=$m&6$skmx+5#n)a2!!v#ed'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG')
 
 
 
@@ -167,9 +171,9 @@ cloudinary.config(
 """
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'doaqzwmlv',
-    'API_KEY': '218989358578492',
-    'API_SECRET': 'IV_X8CaFw80XjHTdExu1LcuUKYM',
+    'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
+    'API_KEY': os.environ.get('API_KEY'),
+    'API_SECRET': os.environ.get('API_SECRET'),
 }
 
 
@@ -215,8 +219,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'waseem.96.ra@gmail.com'
-EMAIL_HOST_PASSWORD = 'rdob zwvt roxp fkmy'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 DEFAULT_FROM_EMAIL = 'noreply<no_reply@domain.com>'
 
@@ -226,7 +230,7 @@ CART_SESSION_ID = 'cart'
 FREE_DELIVERY_THRESHOLD = 50
 STANDARD_DELIVERY_PERCENTAGE = 10
 STRIPE_CURRENCY = 'usd'
-STRIPE_PUBLIC_KEY = 'pk_test_51OIVsBAdWnDYkhgpGaz1IaZCbt3liEImkER1rWpa3ObJp4ykJxSnREprsRNXt8ZIerOcnGcZ2LN1wfX6eDdxdFOi00OfOZvahz'
-STRIPE_SECRET_KEY = 'sk_test_51OIVsBAdWnDYkhgpuf25MQZlM12dAML4v7sr9XnInxsybteuzA08X7HqMmJXVKtqa4raD0g0xTWB4936Co8HEpwM00pjA3UnsT'
+STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 STRIPE_WH_SECRET = ''
 

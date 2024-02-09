@@ -213,3 +213,18 @@ body {
         height: calc(100vh - 116px);
     }
 }
+
+/* Media query for screens with a maximum width of 576 pixels (typically mobile screens) */
+@media (max-width: 576px) {
+    #delivery-banner {
+        height: auto; 
+    }
+
+    #delivery-banner .col {
+        padding: 10px; 
+    }
+
+    #delivery-banner h4 {
+        font-size: 14px; 
+    }
+}

@@ -1,132 +1,130 @@
-{% extends "account/base_entrance.html" %}
 {% load allauth i18n socialaccount %}
 {% block head_title %}
-    {% trans "Signup" %}
+    
 {% endblock head_title %}
 {% block content %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .signup-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        .signup-container h1 {
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #333333;
+        }
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+        input[type="email"]:focus, input[type="password"]:focus {
+            border-color: #0056b3;
+        }
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #0056b3;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        button[type="submit"]:hover {
+            background-color: #666666;
+        }
+        .login-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .login-link a {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #0056b3;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .login-link a:hover {
+            background-color: #666666;
+            transform: translateY(-2px);
+        }
+        .btn-back-home {
+            width: 95%;
+            padding: 10px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #0056b3;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+        .btn-back-home:hover {
+            background-color: #666666;
+        }
+    </style>
 
-<style>
-    body {
-        font-family: 'Arial', sans-serif;
-        background-color: #f4f4f4;
-    }
+    <div class="signup-container">
+        <h1>{% trans "Sign Up" %}</h1>
 
-    .container {
-        background-color: #ffffff;
-        padding: 80px 20px;
-        margin-bottom: 50px;
-        border-radius: 8px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-        text-align: center;
-        color: #333333;
-    }
-
-    p {
-        text-align: center;
-        margin-top: 10px;
-    }
-
-    form {
-        margin-top: 40px;
-    }
-
-    .form-group {
-        margin-bottom: 15px;
-    }
-
-    label {
-        display: block;
-        font-weight: bold;
-        margin-bottom: 5px;
-        color: #333333;
-    }
-
-    input {
-        width: 100%;
-        padding: 8px;
-        font-size: 16px;
-        border: 1px solid #cccccc;
-        border-radius: 4px;
-    }
-
-    button {
-        width: 40%; /* Adjusted width */
-        margin-left: 30%; /* Adjusted margin */
-        padding: 8px; /* Adjusted padding */
-        font-size: 14px; /* Adjusted font size */
-        color: #ffffff;
-        background-color: black;
-        border: 1px solid black;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background-color: #0056b3;
-        border-color: #0056b3;
-    }
-
-    .btn-sign-up {
-        width: 10%;
-        padding: 5px;
-        font-size: 14px;
-        color: #ffffff;
-        background-color: black;
-        border: 1px solid black;
-        border-radius: 4px;
-        cursor: pointer;
-        text-decoration: none;
-        display: inline-block;
-        text-align: center;
-        line-height: 20px;
-    }
-
-    .btn-sign-up:hover {
-        background-color: #0056b3;
-        border-color: #0056b3;
-    }
-
-    .btn-back-home {
-        width: 100%;
-        padding: 10px;
-        font-size: 16px;
-        border-radius: 4px;
-        color: #ffffff;
-        background-color: black;
-        border: 1px solid black;
-        border-radius: 4px;
-        cursor: pointer;
-        margin-top: 10px;
-        margin-right: 10px;
-        text-decoration: none;
-        display: block; 
-        text-align: center;
-        line-height: 40px;
-    }
-
-    header nav ul {
-        display: none;
-    }
-
-</style>
-
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <h1>{% trans "Sign Up" %}</h1>
-            <p>{% trans "Already have an account? Then please" %} <a href="{{ login_url }}" class="btn btn-sign-up">{% trans "sign in" %}</a></p>
-
-            {% url 'account_signup' as action_url %}
-            <form method="post" action="{{ action_url }}" class="login">
-                {% csrf_token %}
-                {{ form.as_p }} {# Renders the form fields as paragraphs #}
-                <button type="submit">{% trans "Sign Up" %}</button>
-            </form>
-            <a href="{% url 'home' %}" class="btn btn-back-home">Back to Home Page</a>
+        {% url 'account_signup' as action_url %}
+        <form method="post" action="{{ action_url }}" class="login">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="email">{% trans "Email" %}</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password1">{% trans "Password" %}</label>
+                <input type="password" id="password1" name="password1" required>
+            </div>
+            <div class="form-group">
+                <label for="password2">{% trans "Confirm Password" %}</label>
+                <input type="password" id="password2" name="password2" required>
+            </div>
+            <button type="submit">{% trans "Sign Up" %}</button>
+        </form>
+        <a href="{% url 'home' %}" class="btn btn-back-home">{% trans "Back to Home Page" %}</a>
+        <div class="login-link">
+            <p>{% trans "Already have an account? Then please" %} <br><br><a href="{{ login_url }}" class="btn btn-sign-up">{% trans "sign in" %}</a></p>
         </div>
     </div>
-</div>
 {% endblock content %}

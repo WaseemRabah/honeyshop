@@ -9,23 +9,28 @@
 
     .container {
         background-color: #ffffff;
-        padding: 80px 20px;
+        padding: 40px;
         border-radius: 8px;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        margin: auto;
+        margin-top: 50px;
     }
 
     h1 {
         text-align: center;
-        color: #333333;
+        color: #007bff;
+        margin-bottom: 20px;
     }
 
     p {
         text-align: center;
         margin-top: 10px;
+        color: #666666;
     }
 
     form {
-        margin-top: 40px;
+        margin-top: 20px;
     }
 
     .form-group {
@@ -39,96 +44,98 @@
         color: #333333;
     }
 
-    input {
+    input[type="email"],
+    input[type="password"] {
         width: 100%;
-        padding: 8px;
+        padding: 10px;
         font-size: 16px;
         border: 1px solid #cccccc;
         border-radius: 4px;
+        margin-bottom: 15px;
+        transition: border-color 0.3s;
+    }
+
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+        border-color: #0056b3;
     }
 
     button {
-        width: 50%;
-        margin-left: 25%;
-        padding: 10px;
-        font-size: 16px;
-        color: #ffffff;
-        background-color: black;
-        border: 1px solid black;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background-color: #0056b3;
-        border-color: #0056b3;
-    }
-
-    .btn-sign-up {
-        width: 10%;  
-        padding: 5px;  
-        font-size: 14px;  
-        color: #ffffff;
-        background-color: black;
-        border: 1px solid black;
-        border-radius: 4px;
-        cursor: pointer;
-        text-decoration: none;
-        display: inline-block;
-        text-align: center;
-        line-height: 20px;
-    }
-
-    .btn-sign-up:hover {
-        background-color: #0056b3;
-        border-color: #0056b3;
-    }
-
-    .social-account {
-        margin-top: 20px;
-        text-align: center;
-    }
-
-    .btn-back-home {
         width: 100%;
         padding: 10px;
         font-size: 16px;
-        border-radius: 4px;
         color: #ffffff;
-        background-color: black;
-        border: 1px solid black;
+        background-color: #0056b3;
+        border: none;
         border-radius: 4px;
         cursor: pointer;
-        margin-top: 10px;
-        margin-right: 10px;
-        text-decoration: none;
-        display: block; 
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #666666;
+    }
+
+    .signup-link {
         text-align: center;
-        line-height: 40px;
+        margin-top: 20px;
+    }
+
+    .signup-link a.btn-sign-up {
+        display: inline-block;
+        padding: 12px 24px;
+        font-size: 16px;
+        color: #ffffff;
+        background-color: #0056b3;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .signup-link a.btn-sign-up:hover {
+        background-color: #666666;
+        transform: translateY(-2px);
+    }
+
+    .btn-back-home {
+        width: 95%;
+        padding: 10px;
+        font-size: 16px;
+        color: #ffffff;
+        background-color: #0056b3;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        margin-top: 15px;
+        transition: background-color 0.3s;
     }
 
     .btn-back-home:hover {
-        background-color: #0056b3;
-        border-color: #0056b3;
+        background-color: #666666;
     }
-
 </style>
+
 
 {% block content %}
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h1>{% trans "Sign In" %}</h1>
-                <p>{% blocktrans %}If you have not created an account yet, then please{% endblocktrans %}
-                <a href="{% url 'account_signup' %}" class="btn btn-sign-up">{% trans "sign up" %}</a>
-                {% blocktrans %}first.{% endblocktrans %}</p>
-
                 <form method="post" action="{% url 'account_login' %}" class="login">
+                    <h1>{% trans "Sign In" %}</h1>
                     {% csrf_token %}
-                    {{ form.as_p }} {# Renders the form fields as paragraphs #}
+                    {{ form.as_p }}
                     <button type="submit">{% trans "Sign In" %}</button>
                 </form>
                 <a href="{% url 'home' %}" class="btn btn-back-home">Back to Home Page</a>
+                <p>{% blocktrans %}If you have not created an account yet, then please{% endblocktrans %}
+                <div class="signup-link">
+                    <a href="{% url 'account_signup' %}" class="btn btn-sign-up">{% trans "Sign Up" %}</a>
+                </div>
             </div>
         </div>
     </div>

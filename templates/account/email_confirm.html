@@ -1,38 +1,41 @@
-{% extends "account/base_entrance.html" %}
 {% load i18n %}
 {% load account %}
 {% load allauth %}
 {% block head_title %}
-    {% trans "Confirm Email Address" %}
+    
 {% endblock head_title %}
 {% block content %}
-    {% element h1 %}
-        {% trans "Confirm Email Address" %}
-    {% endelement %}
-    {% if confirmation %}
-        {% user_display confirmation.email_address.user as user_display %}
-        {% if can_confirm %}
-            <p>
-                {% blocktrans with confirmation.email_address.email as email %}Please confirm that <a href="mailto:{{ email }}">{{ email }}</a> is an email address for user {{ user_display }}.{% endblocktrans %}
-            </p>
-            {% url 'account_confirm_email' confirmation.key as action_url %}
-            {% element form method="post" action=action_url %}
-                {% slot actions %}
-                    {% csrf_token %}
-                    {% element button type="submit" %}
-                        {% trans 'Confirm' %}
-                    {% endelement %}
-                {% endslot %}
-            {% endelement %}
-        {% else %}
-            <p>
-                {% blocktrans %}Unable to confirm {{ email }} because it is already confirmed by a different account.{% endblocktrans %}
-            </p>
-        {% endif %}
-    {% else %}
-        {% url 'account_email' as email_url %}
-        <p>
-            {% blocktrans %}This email confirmation link expired or is invalid. Please <a href="{{ email_url }}">issue a new email confirmation request</a>.{% endblocktrans %}
-        </p>
-    {% endif %}
+    <div style="font-family: Arial, sans-serif; background-color: #f7f7f7; color: #333; margin: 0; padding: 0;">
+        <div style="max-width: 600px; margin: 100px auto; background-color: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+            <h1 style="color: #007bff; font-size: 28px; margin-bottom: 20px;">{% trans "Confirm Email Address" %}</h1>
+            {% if confirmation %}
+                {% user_display confirmation.email_address.user as user_display %}
+                {% if can_confirm %}
+                    <p style="font-size: 18px; line-height: 1.6; margin-bottom: 30px;">
+                        {% blocktrans with confirmation.email_address.email as email %}
+                            Please confirm that <a href="mailto:{{ email }}" style="color: #007bff; text-decoration: underline;">{{ email }}</a> is an email address for user {{ user_display }}.
+                        {% endblocktrans %}
+                    </p>
+                    <form method="post" action="{{ action_url }}">
+                        {% csrf_token %}
+                        <button class="verify-button" type="submit" style="background-color: #007bff; color: #fff; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.3s ease;">
+                            {% trans 'Confirm' %}
+                        </button>
+                    </form>
+                {% else %}
+                    <p style="font-size: 18px; line-height: 1.6; margin-bottom: 30px;">
+                        {% blocktrans %}
+                            Unable to confirm {{ email }} because it is already confirmed by a different account.
+                        {% endblocktrans %}
+                    </p>
+                {% endif %}
+            {% else %}
+                <p style="font-size: 18px; line-height: 1.6; margin-bottom: 30px;">
+                    {% blocktrans %}
+                        This email confirmation link expired or is invalid. Please <a href="{{ email_url }}" style="color: #007bff; text-decoration: underline;">issue a new email confirmation request</a>.
+                    {% endblocktrans %}
+                </p>
+            {% endif %}
+        </div>
+    </div>
 {% endblock content %}

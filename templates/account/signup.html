@@ -129,4 +129,35 @@
             <p>{% trans "Already have an account? Then please" %} <br><br><a href="{{ login_url }}" class="btn btn-sign-up">{% trans "sign in" %}</a></p>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('.login');
+            const password1 = document.getElementById('password1');
+            const password2 = document.getElementById('password2');
+    
+            function showAlert(message) {
+                const alertMessage = document.createElement('div');
+                alertMessage.textContent = message;
+                alertMessage.style.backgroundColor = 'red';
+                alertMessage.style.color = 'white';
+                alertMessage.style.padding = '10px';
+                alertMessage.style.marginBottom = '10px';
+                form.insertBefore(alertMessage, form.firstChild);
+            }
+    
+            form.addEventListener('submit', function(event) {
+                if (password1.value.length < 8) {
+                    showAlert('Password must be at least 8 characters long.');
+                    event.preventDefault(); // Prevent form submission
+                } else if (!/\d/.test(password1.value)) {
+                    showAlert('Password must contain at least one number.');
+                    event.preventDefault(); // Prevent form submission
+                } else if (password1.value !== password2.value) {
+                    showAlert('Passwords do not match.');
+                    event.preventDefault(); // Prevent form submission
+                }
+            });
+        });
+    </script>
 {% endblock content %}

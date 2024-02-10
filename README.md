@@ -1,39 +1,61 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Honeyshop website
 
-Welcome,
+**Deployed website: [Link to website](https://honeyshop-58be54febc57.herokuapp.com/)**
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+![Main image](documentation/main-image.png)
 
-## Codeanywhere Reminders
+**Card number for payment testing: 4242424242424242**
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+## About
 
-`python3 -m http.server`
-
-A button should appear to click: _Open Preview_ or _Open Browser_.
-
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
-
-`http_server`
-
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
-
-A button should appear to click: _Open Preview_ or _Open Browser_.
-
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+"Honeyshop" is an e-commerce website that allows customers to buy various honey products. It has a login system, a shopping cart, a checkout system, and a payment system.
+In addition, the website has a newsletter subscription.
 
 ---
 
-Happy coding!
+## UX
+
+The website was created to be eye-catching and user-friendly. The user is given plenty of choices to choose from when they are shopping. The emphasis is on the user experience; the user can navigate the website easily to fulfill users' goals. The website is designed to be easy to use and easy to understand. Additionally,It also handles all personnel functionality moving from admin to manager to other personnel.
+Business goals were to make the website as scalable as possible and reusable in the real world so that the store personnel could use it according to their position in the company.
+
+
+### Target Audience
+
+Our e-commerce honey shop targets individuals who:
+
+- **Income Level:** Middle-income earners.
+- **Target groups:** All segments of society.
+
+
+#### Psychographic Characteristics:
+
+- **Interests and Hobbies:** Health-conscious individuals interested in natural products and culinary exploration.
+- **Values and Beliefs:** Value sustainability, authenticity, and transparency in food sourcing.
+- **Online Behavior:** Active online shoppers who seek convenience and value informative content.
+- **Shopping Preferences:** Prefer high-quality, ethically sourced honey products with an emphasis on health benefits and unique flavors.
+
+
+#### Needs and Pain Points:
+
+- Seek natural and sustainable honey options for health and culinary purposes.
+- Desire transparent sourcing and production information.
+- Value user-friendly online shopping experiences with secure payment options.
+
+
+### User Stories
+
+#### First Time Visitor
+
+| User Story ID | Description                                                                                                 |
+|---------------|-------------------------------------------------------------------------------------------------------------|
+| 1             | Easily understand the purpose and offerings of the honey shop.                                             |
+| 2             | Expect a visually appealing and intuitive interface for navigation.                                         |
+| 3             | Seek clear and concise information about the types of honey available and their benefits.                   |
+| 4             | Require guidance on how to create an account for making purchases.                                           |
+| 5             | Expect a straightforward process to browse products and add them to the cart.                                |
+| 6             | Want to feel confident about the security of personal information during registration.                       |
+| 7             | Find information about shipping policies and delivery times for my location.                                 |
+| 8             | Need clear instructions on how to proceed with the checkout process.                                         |
+| 9             | Appreciate options for contacting customer support or accessing FAQs for assistance.                         |
+| 10            | Easily find links to the shop's social media profiles or newsletter subscription for updates and promotions. |

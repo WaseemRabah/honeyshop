@@ -58,3 +58,46 @@
 | Delete order's item            | No         | No        | No      | Yes                   |
 
 
+## Main Features:
+
+- Each page has a navbar and a footer beside account's pages.
+
+### Navbar:
+
+- The Navbar has:
+    - logo, which redirects to the home page;
+    ![Logo](documentation/logo-image.png)
+
+    - All products, a list appears to arrange the display of products on the site according to what the user chooses;
+    ![All Products](documentation/allproducts-image.png)
+    ![All Products List](documentation/all-products-list-image.png)
+
+    - Raw honey, which redirects to the raw honey page;
+    ![Raw Honey](documentation/rawhoney-image.png)
+    ![Raw Honey Products](documentation/rawhoney-products-image.png)
+
+    - Pure honey, which redirects to the pure honey page;
+    ![Pure Honey](documentation/purehoney-image.png)
+    ![Pure Honey Products](documentation/purehoney-products-image.png)
+
+    - Special Offers honey, which redirects to the special offers page;
+    ![Special Offers](documentation/specialoffers-image.png)
+    ![Special Offers Products](documentation/specialoffers-products-image.png)
+
+    - Wish List, which redirects to the wish list page;
+    ![Special Offers](documentation/wishlist-image.png)
+    - If the user not logged in it will redirects him to sign in page;
+    ![Sign In](documentation/signin-image.png)
+    - If the user is already logged in it will redirects him to wishlist page;
+    ![Wish List](documentation/wishlist-loggedin-image.png)
+
+    - My Account, which redirects to the register or log in page;
+    ![My Account](documentation/myaccount-image.png)
+    ![Register/Log In](documentation/myaccount-list-image.png)
+
+    - Shopping Bag, which redirects to the shopping bag;
+    ![Shopping Bag](documentation/carticon-image.png)
+    ![Shopping Bag Page](documentation/cart-image.png)
+
+    - Search Field, let the user search for specific products;
+    ![Shopping Bag](documentation/searchfield-image.png)

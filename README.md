@@ -157,3 +157,60 @@ Listening to our customers is essential to our growth strategy. We value their f
 
 ### Conclusion
 As we look to the future, we are excited about the possibilities that lie ahead. Our commitment to innovation, sustainability, and customer satisfaction will continue to guide us on our journey of growth and success.
+
+
+
+---
+
+
+## Technologies used
+- ### Languages:
+    
+    + [Python 3.11.4](https://www.python.org/downloads/release/python-3114/): the primary language used to develop the server-side of the website.
+    + [JS](https://www.javascript.com/): the primary language used to develop interactive components of the website.
+    + [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML): the markup language used to create the website.
+    + [CSS](https://developer.mozilla.org/en-US/docs/Web/css): the styling language used to style the website.
+
+- ### Frameworks and libraries:
+
+    + [Django](https://www.djangoproject.com/): python framework used to create all the logic.
+    + [jQuery](https://jquery.com/): was used to control click events and sending AJAX requests.
+    + [jQuery User Interface](https://jqueryui.com/) was used to create interactive elements.
+
+- ### Databases:
+
+    + [SQLite](https://www.sqlite.org/): was used as a development database.
+    + [PostgreSQL](https://www.postgresql.org/): the database used to store all the data.
+
+
+- ### Other tools:
+
+    + [Git](https://git-scm.com/): the version control system used to manage the code.
+    + [Pip3](https://pypi.org/project/pip/): the package manager used to install the dependencies.
+    + [Gunicorn](https://gunicorn.org/): the web server used to run the website.
+    + [Psycopg2](https://www.psycopg.org/): the database driver used to connect to the database.
+    + [Django-allauth](https://django-allauth.readthedocs.io/en/latest/): the authentication library used to create the user accounts.
+    + [Django-crispy-forms](https://django-cryptography.readthedocs.io/en/latest/): was used to control the rendering behavior of Django forms.
+    + [GitHub](https://github.com/): used to host the website's source code.
+    + [VSCode](https://code.visualstudio.com/): the IDE used to develop the website.
+    + [Chrome DevTools](https://developer.chrome.com/docs/devtools/open/): was used to debug the website.
+    + [Font Awesome](https://fontawesome.com/): was used to create the icons used in the website.
+    + [W3C Validator](https://validator.w3.org/): was used to validate HTML5 code for the website.
+    + [W3C CSS validator](https://jigsaw.w3.org/css-validator/): was used to validate CSS code for the website.
+    + [Flumer](https://fulmerhoney.com/index.php?route=common/home) was used to get the products images.
+    + [Unsplash](https://unsplash.com/) was used to get the homepage background image.
+    + [JShint](https://jshint.com/): was used to validate JS code for the website.
+    + [PEP8](https://pep8.org/): was used to validate Python code for the website.
+    + [stripe](https://stripe.com/): was used to create the payment system.
+    + [Sitemap Generator](https://www.xml-sitemaps.com/) was used to create the sitemap.xml file.
+    + [Django-extensions](https://django-extensions.readthedocs.io/en/latest/) was used to create a Entity-Relationship Diagram.
+
+---
+
+## Features
+
+
+Please refer to the [FEATURES.md](FEATURES.md) file for all test-related documentation.
+
+
+---

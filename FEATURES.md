@@ -106,6 +106,7 @@
 
 ![Home page](documentation/main-image.png)
 
-    Home page has:
-    - Delivery Banner;
-    ![Delivery Banner](documentation/delivery-banner-image.png)
+Home page has:
+
+- Delivery Banner:
+  ![Delivery Banner](documentation/delivery-banner-image.png)

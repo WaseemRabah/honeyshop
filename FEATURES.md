@@ -110,3 +110,25 @@ Home page has:
 
 - Delivery Banner:
   ![Delivery Banner](documentation/delivery-banner-image.png)
+
+- Hero Section:
+  ![Hero Section](documentation/hero-section-image.png)
+
+- Shop Now Button, which redirects to the products page:
+  ![Shop Now Button](documentation/shop-now-button.png)
+  ![Shop Now Products](documentation/shop-now-products.png)
+
+### Footer:
+
+![Footer](documentation/footer-image.png)
+
+Footer has the following features:
+
+- Newletter Subscription, which redirects to the newsletter page;
+![Newsletter](documentation/newsletter-image.png)
+
+- After submitting the newsletter subscription, the user will be directed to success page;
+![Success](documentation/success-image.png)
+
+- If the user already subscribed, a message will shows up for the user;
+![Subsciber Exists](documentation/subscriber-exists-image.png)

@@ -74,7 +74,7 @@
 
     - Raw honey, which redirects to the raw honey page;
     ![Raw Honey](documentation/rawhoney-image.png)
-    ![Raw Honey Products](documentation/rawhoney-products-image.png)
+    ![Raw Honey Products](documentation/purehoney-products-image.png)
 
     - Pure honey, which redirects to the pure honey page;
     ![Pure Honey](documentation/purehoney-image.png)

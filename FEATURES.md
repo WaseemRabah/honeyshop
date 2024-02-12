@@ -101,3 +101,11 @@
 
     - Search Field, let the user search for specific products;
     ![Shopping Bag](documentation/searchfield-image.png)
+
+### Home page:
+
+![Home page](documentation/main-image.png)
+
+    Home page has:
+    - Delivery Banner;
+    ![Delivery Banner](documentation/delivery-banner-image.png)

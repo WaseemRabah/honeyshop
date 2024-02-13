@@ -65,53 +65,50 @@
 ### Navbar:
 
 - The Navbar has:
-    - logo, which redirects to the home page;
+    - logo, which redirects to the home page:
 
     ![Logo](documentation/logo-image.png)
 
-    - All products, a list appears to arrange the display of products on the site according to what the user chooses;
+    - All products, a list appears to arrange the display of products on the site according to what the user chooses:
     ![All Products List](documentation/all-products-list-image.png)
     ![All Products](documentation/all-products-image.png)
 
-    - Raw honey, which redirects to the raw honey page;
+    - Raw honey, which redirects to the raw honey page:
     
     ![Raw Honey](documentation/rawhoney-image.png)
     ![Raw Honey Products](documentation/rawhoney-products-image.png)
 
-    - Pure honey, which redirects to the pure honey page;
+    - Pure honey, which redirects to the pure honey page:
 
     ![Pure Honey](documentation/purehoney-image.png)
     ![Pure Honey Products](documentation/purehoney-products-image.png)
 
-    - Special Offers honey, which redirects to the special offers page;
+    - Special Offers honey, which redirects to the special offers page:
 
     ![Special Offers](documentation/specialoffers-image.png)
     ![Special Offers Products](documentation/specialoffers-products-image.png)
 
-    - Products, raw honey, pure honey, special offers pages, have sort selector;
+    - Products, raw honey, pure honey, special offers pages, have sort selector:
     ![Sort Selector](documentation/sort-selector-image.png)
 
-    - Wish List, which redirects to the wish list page;
+    - Wish List, which redirects to the wish list page:
 
     ![Special Offers](documentation/wishlist-image.png)
-    - If the user not logged in it will redirects him to sign in page;
+    - If the user not logged in it will redirects him to sign in page:
     ![Sign In](documentation/signin-image.png)
-    - If the user is already logged in it will redirects him to wishlist page;
+    - If the user is already logged in it will redirects him to wishlist page:
     ![Wish List](documentation/wishlist-loggedin-image.png)
 
-    - My Account, which redirects to the register or log in page;
+    - My Account, which redirects to register or login page:
 
-    ![My Account](documentation/myaccount-image.png)
-
-    
     ![Register/Log In](documentation/myaccount-list-image.png)
 
-    - Shopping Bag, which redirects to the shopping bag;
+    - Shopping Bag, which redirects to the shopping bag:
 
     ![Shopping Bag](documentation/carticon-image.png)
     ![Shopping Bag Page](documentation/cart-image.png)
 
-    - Search Field, let the user search for specific products;
+    - Search Field, let the user search for specific products:
 
     ![Shopping Bag](documentation/searchfield-image.png)
 
@@ -140,15 +137,15 @@ Home page has:
 
 Footer has the following features:
 
-- Newletter Subscription, which redirects to the newsletter page;
+- Newletter Subscription, which redirects to the newsletter page:
 
 ![Newsletter](documentation/newsletter-image.png)
 
-- After submitting the newsletter subscription, the user will be directed to success page;
+- After submitting the newsletter subscription, the user will be directed to success page:
 
 ![Success](documentation/success-image.png)
 
-- If the user already subscribed, a message will shows up for the user;
+- If the user already subscribed, a message will shows up for the user:
 
 ![Subsciber Exists](documentation/subscriber-exists-image.png)
 
@@ -157,19 +154,19 @@ Footer has the following features:
 
 ![Sign Up](documentation/signup-form-image.png)
 
-- After the user filling the form and clicking sign-up button, an email verification message will shows up;
+- After the user filling the form and clicking sign-up button, an email verification message will shows up:
 
 ![verification](documentation/verification-image.png)
 
-- The user then need to login to his email, and confirm his email address using the url that has been sent to him;
+- The user then need to login to his email, and confirm his email address using the url that has been sent to him:
 
 ![Email Confirm](documentation/email-confirm-image.png)
 
-- At the same time an alert message will shows up on the home page;
+- At the same time an alert message will shows up on the home page:
 
 ![Confirm Alert](documentation/confirm-alert-image.png)
 
-- After clicking the url a confirm email address page will show up;
+- After clicking the url a confirm email address page will show up:
 
 ![Confirm Page](documentation/email-confirm-page-image.png)
 
@@ -177,43 +174,75 @@ Footer has the following features:
 
 ![Confirm Success](documentation/confirm-success-message-image.png)
 
-- Now the user need to click on my account icon and then click on login;
+- Now the user need to click on my account icon and then click on login:
 
 ![Log In](documentation/myaccount-list-image.png)
 
-- If the user forgot his password, he can click on (Forgot your password?) link, it will redirect the user to reset password page;
+- If the user forgot his password, he can click on (Forgot your password?) link, it will redirect the user to reset password page:
 
 ![Reset Password](documentation/reset-password-image.png)
 
-- After the user input his email address and reset my password button, a message will shows up for the user confirming that a link has been sent to his email address;
+- After the user input his email address and reset my password button, a message will shows up for the user confirming that a link has been sent to his email address:
 
 ![Reset Password Link](documentation/reset-password-link-image.png)
 
-- Now after clicking on the link in the email message, the user will be redirected to change password page;
+- Now after clicking on the link in the email message, the user will be redirected to change password page:
 
 ![Change Password](documentation/change-password-image.png)
 
-- After changing the password, a success page will shows up;
+- After changing the password, a success page will shows up:
 
 ![Success Page](documentation/change-password-success-image.png)
 
-- When the user click on back to home page button, he will be redirected to the home page with success message;
+- When the user click on back to home page button, he will be redirected to the home page with success message:
 
 ![Home Success](documentation/change-password-success-home-image.png)
 
+- To sign out, the user need to click on my account icon and then click on logout, he will be redirected to sign out page:
+
+![Sign Out](documentation/signout-image.png)
+
+- After clicking on sign out:
+
+
+![Sign Out Success](documentation/signout-success.png)
 
 ### wishlist:
 
 ![Wish List](documentation/add-to-wishlist-image.png)
 
-- To add a product to wishlist, the user should be logged in;
+- To add a product to wishlist, the user should be logged in:
 
-- After adding a product to wishlist, a success message will shows up;
+- After adding a product to wishlist, a success message will shows up:
 
 ![Wishlist Success](documentation/wishlist-success-image.png)
 
-- To remove a product from the wishlist, user need to click on remove button;
+- If a product is already in the wishlist, an alert message will shows up:
+
+![Wishlist Alert](documentation/wishlist-alert-image.png)
+
+- To remove a product from the wishlist, user need to click on remove button:
 
 ![Wishlist Remove](documentation/wishlist-remove-image.png)
 
 ### Bag:
+
+- To add a product to the bag, the user to select a product choose quantitiy, and then click on add to bag button:
+
+![Add To Bag](documentation/add-to-bag-image.png)
+
+- After clicking on add to bag button, a success message will shows up:
+
+![Add To Bag Success](documentation/added-success-image.png)
+
+- To checkout, the user need to click on secure checkout, and he will be redirected to display checkout page:
+
+![Display Bag](documentation/display-bag-image.png)
+
+- Now the user need to click on secure checkout again, and he will be redirected to checkout page:
+
+![Checkout](documentation/checkout-image.png)
+
+- After filling the checkout fields and clicking on complete order, the user will be redirected to order summary page with success message:
+
+![Checkout success](documentation/checkout-success-image.png)

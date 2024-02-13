@@ -151,7 +151,7 @@ Footer has the following features:
 ![Subsciber Exists](documentation/subscriber-exists-image.png)
 
 
-### Account:
+### Sign Up steps:
 
 ![Sign Up](documentation/signup-form-image.png)
 
@@ -174,3 +174,27 @@ Footer has the following features:
 - After clicking the confirm button, the user will be redirected to the home page with success message ;
 
 ![Confirm Success](documentation/confirm-success-message-image.png)
+
+- Now the user need to click on my account icon and then click on login;
+
+![Log In](documentation/myaccount-list-image.png)
+
+- If the user forgot his password, he can click on (Forgot your password?) link, it will redirect the user to reset password page;
+
+![Reset Password](documentation/reset-password-image.png)
+
+- After the user input his email address and reset my password button, a message will shows up for the user confirming that a link has been sent to his email address;
+
+![Reset Password Link](documentation/reset-password-link-image.png)
+
+- Now after clicking on the link in the email message, the user will be redirected to change password page;
+
+![Change Password](documentation/change-password-image.png)
+
+- After changing the password, a success page will shows up;
+
+![Success Page](documentation/change-password-success-image.png)
+
+- When the user click on back to home page button, he will be redirected to the home page with success message;
+
+![Home Success](documentation/change-password-success-home-image.png)

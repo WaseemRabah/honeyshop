@@ -198,3 +198,20 @@ Footer has the following features:
 - When the user click on back to home page button, he will be redirected to the home page with success message;
 
 ![Home Success](documentation/change-password-success-home-image.png)
+
+
+### wishlist:
+
+![Wish List](documentation/add-to-wishlist-image.png)
+
+- To add a product to wishlist, the user should be logged in;
+
+- After adding a product to wishlist, a success message will shows up;
+
+![Wishlist Success](documentation/wishlist-success-image.png)
+
+- To remove a product from the wishlist, user need to click on remove button;
+
+![Wishlist Remove](documentation/wishlist-remove-image.png)
+
+### Bag:

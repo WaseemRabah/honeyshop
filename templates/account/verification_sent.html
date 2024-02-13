@@ -56,17 +56,35 @@
             color: #0056b3;
         }
 
+        .home-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .home-button:hover {
+            background-color: #666666;
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Verify Your Email Address</h1>
         <p>We have sent an email to you for verification. Please check you inbox. If you do not see the verification email in your main inbox, check your spam folder. Please contact us if you do not receive the verification email within a few minutes.</p>
-        <!--
+        
         <div class="signin-signup-links">
             <a href="{% url 'account_login' %}">Sign In</a> | <a href="{% url 'account_signup' %}">Sign Up</a>
         </div>
-        -->
+        
+        <a href="{% url 'home' %}" class="home-button">Home</a>
     </div>
 </body>
 </html>

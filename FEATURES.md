@@ -70,8 +70,8 @@
     ![Logo](documentation/logo-image.png)
 
     - All products, a list appears to arrange the display of products on the site according to what the user chooses;
-    ![All Products](documentation/allproducts-image.png)
     ![All Products List](documentation/all-products-list-image.png)
+    ![All Products](documentation/all-products-image.png)
 
     - Raw honey, which redirects to the raw honey page;
     
@@ -87,6 +87,9 @@
 
     ![Special Offers](documentation/specialoffers-image.png)
     ![Special Offers Products](documentation/specialoffers-products-image.png)
+
+    - Products, raw honey, pure honey, special offers pages, have sort selector;
+    ![Sort Selector](documentation/sort-selector-image.png)
 
     - Wish List, which redirects to the wish list page;
 
@@ -146,3 +149,28 @@ Footer has the following features:
 - If the user already subscribed, a message will shows up for the user;
 
 ![Subsciber Exists](documentation/subscriber-exists-image.png)
+
+
+### Account:
+
+![Sign Up](documentation/signup-form-image.png)
+
+- After the user filling the form and clicking sign-up button, an email verification message will shows up;
+
+![verification](documentation/verification-image.png)
+
+- The user then need to login to his email, and confirm his email address using the url that has been sent to him;
+
+![Email Confirm](documentation/email-confirm-image.png)
+
+- At the same time an alert message will shows up on the home page;
+
+![Confirm Alert](documentation/confirm-alert-image.png)
+
+- After clicking the url a confirm email address page will show up;
+
+![Confirm Page](documentation/email-confirm-page-image.png)
+
+- After clicking the confirm button, the user will be redirected to the home page with success message ;
+
+![Confirm Success](documentation/confirm-success-message-image.png)

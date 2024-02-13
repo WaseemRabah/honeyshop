@@ -102,6 +102,8 @@
     - My Account, which redirects to the register or log in page;
 
     ![My Account](documentation/myaccount-image.png)
+
+    
     ![Register/Log In](documentation/myaccount-list-image.png)
 
     - Shopping Bag, which redirects to the shopping bag;

@@ -214,3 +214,26 @@ Please refer to the [FEATURES.md](FEATURES.md) file for all test-related documen
 
 
 ---
+
+## Design
+
+The design philosophy of our e-commerce honey shop is rooted in simplicity and user-centricity. Inspired by modern design principles, we have embraced a minimalist approach to ensure a seamless and intuitive experience for our users.
+
+Drawing from the principles of Material Design, we have carefully selected colors that resonate with our brand identity while remaining consistent with industry standards. These colors not only enhance visual appeal but also contribute to a cohesive and harmonious user interface.
+
+In our pursuit of providing a comprehensive customer experience and efficient business management, we have embraced the use of white space strategically throughout the application. By incorporating ample white space, we aim to declutter the interface and prioritize essential content, thereby facilitating better user focus and engagement.
+
+Our commitment to user-centric design extends beyond aesthetics; it is a reflection of our dedication to crafting meaningful interactions and fostering a delightful user experience at every touchpoint.
+
+### Color Scheme
+
+Our e-commerce honey shop adopts a carefully curated color scheme that balances both vibrancy and tranquility. The combination of bold and neutral colors creates an inviting and harmonious user experience.
+
+- **Bold Colors:** Vibrant hues are strategically incorporated to capture attention and add energy to the interface. These bold colors evoke a sense of excitement and playfulness, drawing users into the browsing and shopping experience.
+
+- **Neutral Colors:** Complementing the bold palette, neutral tones are employed to instill a sense of calmness and sophistication. These understated colors provide a backdrop of serenity, allowing users to navigate the website with ease and focus on the richness of our honey offerings.
+
+The harmonious interplay between bold and neutral colors reflects our commitment to creating an engaging and visually appealing environment for our customers to explore and enjoy the world of honey.
+
+
+![Color Scheme](documentation/honeyshop-colorscheme-image.png)

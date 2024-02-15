@@ -237,3 +237,26 @@ The harmonious interplay between bold and neutral colors reflects our commitment
 
 
 ![Color Scheme](documentation/honeyshop-colorscheme-image.png)
+
+
+### Typography
+The main font used in the application is Lato. During my learning experience, I found that the Lato font is straightforward and has perfect readability, increasing user experience. This font is also consistent with the color scheme.
+
+![Typography](documentation/font-family-image.png)
+
+
+### Imagery
+
+- The main background image was downloaded from unsplash.
+
+  ![Background](documentation/background-image.jpg)
+
+- Products images were downloaded from the websites listed in the **Credits section**. [Content and Images](#content-and-images)
+
+
+### Wireframes
+
+  [Honey Shop Desktop](documentation/Desktop-Wireframes.pdf)
+  [Honey Shop Smartphone](documentation/Mobile-Wireframes.pdf)
+
+---

@@ -256,8 +256,7 @@ The main font used in the application is Lato. During my learning experience, I 
 
 ### Wireframes
 
-  [Honey Shop Desktop](documentation/Desktop-Wireframes.pdf)
-
-  [Honey Shop Smartphone](documentation/Mobile-Wireframes.pdf)
+  [Wireframes](documentation/main-wireframes.pdf)
 
 ---
+

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/accounts/signup/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/accounts/login/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/bag/display_bag/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/?sort=price&amp;direction=asc</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/?sort=rating&amp;direction=desc</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/?sort=category&amp;direction=asc</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/?category=raw_honey</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/?category=pure_honey</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/?category=special_offers</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/accounts/login/?next=/wishlist/view_wishlist/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/newsletter/subscribe/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/accounts/password/reset/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/products/blossom/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/products/wooden/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/products/coriander/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/products/acacia/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/products/maple/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/products/canolacream/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/products/chesnut/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/products/lavender/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/products/acaciacomb/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/products/linden/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/products/holly/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/products/forest/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/products/special1/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/products/special2/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/products/special3/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/products/siaagn/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/products/cabimon/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/products/brouyeee/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://honeyshop-58be54febc57.herokuapp.com/products/products/amirkaal/</loc>
+  <lastmod>2024-02-16T08:46:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>

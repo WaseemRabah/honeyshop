@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /bag/
+Sitemap: https://honeyshop-58be54febc57.herokuapp.com/sitemap.xml

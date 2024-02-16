@@ -51,7 +51,7 @@
 | Product's unit's details       | No         | No        | Yes     | Yes                   |
 | Orders                         | No         | No        | Yes     | Yes                   |
 | Order's details                | No         | No        | Yes     | Yes                   |
-| Edit order status feature      | No         | No        | No      | Yes + Logistics manager   |
+| Edit order status feature      | No         | No        | No      | Yes                   |
 | Edit Order                     | No         | No        | No      | Yes                   |
 | Delete order                   | No         | No        | No      | Yes                   |
 | Edit order's item              | No         | No        | No      | Yes                   |

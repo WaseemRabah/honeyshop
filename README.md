@@ -260,3 +260,14 @@ The main font used in the application is Lato. During my learning experience, I 
 
 ---
 
+## Agile Methodology
+
+### GitHub Project Management
+
+  ![GitHub Project Management](documentation/agile-tasks-image.png)
+
+GitHub Project Management was used to manage the project. If it hadn't been for the GitHub project management, I wouldn't have been able to manage the development of the application. It helped me to prioritize the tasks and to keep track of my progress.
+
+![GitHub Project Management](documentation/task1-image.png)
+
+![GitHub Project Management](documentation/task2-image.png)

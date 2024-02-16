@@ -271,3 +271,15 @@ GitHub Project Management was used to manage the project. If it hadn't been for 
 ![GitHub Project Management](documentation/task1-image.png)
 
 ![GitHub Project Management](documentation/task2-image.png)
+
+
+## Information Architecture
+
+### Database
+
+* During the earliest stages of the project, the database was created using SQLite.
+* The database was then migrated to PostgreSQL.
+
+### Entity-Relationship Diagram
+
+![ERD](documentation/erd-image.png)

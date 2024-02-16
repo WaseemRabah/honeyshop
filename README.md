@@ -283,3 +283,42 @@ GitHub Project Management was used to manage the project. If it hadn't been for 
 ### Entity-Relationship Diagram
 
 ![ERD](documentation/erd-image.png)
+
+
+---
+## Testing
+
+Please refer to the [TESTING.md](TESTING.md) file for all test-related documentation.
+
+---
+
+## Credits
+
+- [GitHub](https://github.com/) for giving the idea of the project's design.
+- [Django](https://www.djangoproject.com/) for the framework.
+- [Font awesome](https://fontawesome.com/): for the free access to icons.
+- [jQuery](https://jquery.com/): for providing varieties of tools to make standard HTML code look appealing.
+- [jQuery UI](https://jqueryui.com/): for providing varieties of tools to make standard HTML code look appealing.
+- [Postgresql](https://www.postgresql.org/): for providing a free database.
+- [Multiple Video & Image Upload Plugin - jQuery Miv.js](https://www.jqueryscript.net/form/multi-video-image-upload.html): for providing a free plugin to upload multiple videos and images.
+- [Stripe](https://stripe.com/): for providing a free payment gateway.
+- [htmlcolorcodes.com](https://htmlcolorcodes.com/): for providing a free database on colors.
+- [fontawesome](https://fontawesome.com/): for providing free icons.
+- [googlefonts](https://fonts.google.com/): for providing free fonts.
+- [Responsive Viewer](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb/related?hl=en): for providing a free platform to test website responsiveness
+- [GoFullPage](https://gofullpage.com/): for allowing to create free full web page screenshots;
+- [Sitemap Generator](https://www.xml-sitemaps.com/): for providing a free platform to generate sitemaps.
+- [Coolors](https://coolors.co/): for providing a free platform to generate your own palette.
+
+---
+
+### Content and Images
+
+- [unsplash](https://unsplash.com/): for providing a free products' images.
+- [Flumer](https://fulmerhoney.com/index.php?route=common/home) was used to get the products images.
+
+
+## Acknowledgments
+
+- [Juliia Konovalova](https://github.com/IuliiaKonovalova) Great supporter and motivator.
+- [Code Institute](https://codeinstitute.net/) tutors and Slack community members for their support and help.

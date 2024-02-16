@@ -10,7 +10,6 @@
 | Logout                         | Yes        | Yes       | Yes     | Yes                   |
 | Store Products                 | Yes        | Yes       | Yes     | Yes                   |
 | Store Product's Details        | Yes        | Yes       | Yes     | Yes                   |
-| All reviews                    | Yes        | Yes       | Yes     | Yes                   |
 | Bag                            | No         | Yes       | Yes     | Yes                   |
 | My Orders                      | No         | Yes       | Yes     | Yes                   |
 | My Order's Details             | No         | Yes       | Yes     | Yes                   |

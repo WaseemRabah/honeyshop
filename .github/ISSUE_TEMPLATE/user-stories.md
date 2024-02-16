@@ -16,4 +16,4 @@ assignees: ''
 
 ---
 
-As a **Visitor**, I want to be able to ****, so that I can ****.
+As a **Customer**, I want to be able to ****, so that I can ****.

@@ -1,17 +1,18 @@
 from django.shortcuts import render,  redirect, reverse, get_object_or_404
 from django.contrib import messages
-from django.db.models import Q
+from django.db.models import Q, Avg
 from django.views import View
 from django.views.generic import CreateView, ListView, DetailView
-from .models import Category, Product
-from .forms import ProductForm
+from .models import Category, Product, Review
+from .forms import ProductForm, ReviewForm
 from django.urls import reverse_lazy
 from django.views.generic.edit import UpdateView, DeleteView
 from django.db.models.functions import Lower 
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
+""" A view to show all products, including sorting and search queries """
 def all_products(request):
-    """ A view to show all products, including sorting and search queries """
 
     products = Product.objects.all()
     query = None
@@ -93,6 +94,14 @@ class ProductDetailView(DetailView):
     def get_queryset(self):
         return Product.objects.filter(stock__gt=0)
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        product = self.get_object()
+        reviews = Review.objects.filter(product=product)
+        avg_rating = reviews.aggregate(Avg('stars'))['stars__avg']
+        context['reviews'] = reviews
+        context['avg_rating'] = avg_rating
+        return context
 
 class ProductCreateView(CreateView):
     model = Product
@@ -100,7 +109,7 @@ class ProductCreateView(CreateView):
     template_name = 'products/product_form.html'
 
     def form_valid(self, form):
-        # Set the user field to the logged-in user before saving
+        
         form.instance.user = self.request.user
         return super().form_valid(form)
 
@@ -113,5 +122,70 @@ class ProductUpdateView(UpdateView):
 
 class ProductDeleteView(DeleteView):
     model = Product
-    success_url = reverse_lazy('products:product_list')  # Redirect to product list after deletion
+    success_url = reverse_lazy('products:product_list')  
     template_name = 'products/product_confirm_delete.html'
+
+
+class AddReviewView(LoginRequiredMixin, View):
+    def post(self, request, product_id):
+        product = get_object_or_404(Product, pk=product_id)
+        
+        user_review = Review.objects.filter(product=product, user=request.user)
+        if user_review.exists():
+            messages.error(request, 'You have already given your review on this product.')
+            return redirect('products:product_detail', product_slug=product.slug)
+        
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            stars = form.cleaned_data['stars']
+            comment = form.cleaned_data['comment']
+            user = request.user 
+            review = Review(product=product, stars=stars, comment=comment, user=user) 
+            review.save()
+            return redirect('products:product_detail', product_slug=product.slug)
+        else:
+            
+            return render(request, 'products/product_detail.html', {'form': form, 'product': product})
+
+    def get(self, request, product_id):
+        product = get_object_or_404(Product, pk=product_id)
+        form = ReviewForm()
+        return render(request, 'products/product_detail.html', {'form': form, 'product': product})
+    
+from django.urls import reverse_lazy
+
+class EditReviewView(LoginRequiredMixin, UpdateView):
+    model = Review
+    form_class = ReviewForm
+    template_name = 'products/edit_review.html'
+    slug_url_kwarg = 'review_id'
+    slug_field = 'id'
+    pk_url_kwarg = 'product_id'
+
+    def get_success_url(self):
+        product_slug = self.object.product.slug
+        return reverse('products:product_detail', kwargs={'product_slug': product_slug})
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+
+    
+class DeleteReviewView(LoginRequiredMixin, DeleteView):
+    model = Review
+    template_name = 'products/delete_review.html'
+
+    def get_success_url(self):
+        product_slug = self.object.product.slug
+        return reverse('products:product_detail', kwargs={'product_slug': product_slug})
+
+    def get_queryset(self):
+        return Review.objects.filter(user=self.request.user)
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(request, 'Your review has been deleted.')
+        return super().delete(request, *args, **kwargs)
+    
+def review_detail(request, pk):
+    review = get_object_or_404(Review, pk=pk)
+    return render(request, 'products/review_detail.html', {'review': review})

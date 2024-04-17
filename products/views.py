@@ -9,6 +9,7 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import UpdateView, DeleteView
 from django.db.models.functions import Lower 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 
 
 """ A view to show all products, including sorting and search queries """
@@ -152,7 +153,6 @@ class AddReviewView(LoginRequiredMixin, View):
         form = ReviewForm()
         return render(request, 'products/product_detail.html', {'form': form, 'product': product})
     
-from django.urls import reverse_lazy
 
 class EditReviewView(LoginRequiredMixin, UpdateView):
     model = Review

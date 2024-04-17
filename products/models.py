@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.db.models import Avg
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -36,5 +38,13 @@ class Product(models.Model):
 class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    stars = models.IntegerField(default=0)  
+    stars = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])  
     comment = models.TextField(blank=True)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        
+        
+        avg_rating = Review.objects.filter(product=self.product).aggregate(Avg('stars'))['stars__avg']
+        self.product.rating = avg_rating
+        self.product.save()

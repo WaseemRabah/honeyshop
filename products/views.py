@@ -100,6 +100,12 @@ class ProductDetailView(DetailView):
         product = self.get_object()
         reviews = Review.objects.filter(product=product)
         avg_rating = reviews.aggregate(Avg('stars'))['stars__avg']
+        
+        # Pre-render stars
+        for review in reviews:
+            review.full_stars = range(review.stars)
+            review.empty_stars = range(5 - review.stars)
+        
         context['reviews'] = reviews
         context['avg_rating'] = avg_rating
         return context
@@ -183,6 +189,19 @@ class DeleteReviewView(LoginRequiredMixin, DeleteView):
         return Review.objects.filter(user=self.request.user)
 
     def delete(self, request, *args, **kwargs):
+        review = self.get_object()
+        product = review.product
+        
+        # Get all reviews for the product except the one being deleted
+        remaining_reviews = Review.objects.filter(product=product).exclude(pk=review.pk)
+        
+        # Recalculate the average rating
+        new_avg_rating = remaining_reviews.aggregate(Avg('stars'))['stars__avg']
+        
+        # Update the product's average rating
+        product.avg_rating = new_avg_rating
+        product.save()
+        
         messages.success(request, 'Your review has been deleted.')
         return super().delete(request, *args, **kwargs)
     

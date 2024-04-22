@@ -48,3 +48,4 @@ class Review(models.Model):
         avg_rating = Review.objects.filter(product=self.product).aggregate(Avg('stars'))['stars__avg']
         self.product.rating = avg_rating
         self.product.save()
+        

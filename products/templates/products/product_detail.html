@@ -31,44 +31,29 @@
                     <p class="mb-0">{{ product.name }}</p>
                     <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
                     {% if product.category %}
-                    <p class="small mt-1 mb-0">
-                        <a class="text-muted" href="{% url 'products:products' %}?category={{ product.category.name }}">
-                            <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
-                        </a>
-                    </p>
-                    {% endif %}
-                    {% if product.rating %}
-                        <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
-                    {% else %}
-                        <small class="text-muted">No Rating</small>
+                        <p class="small mt-1 mb-0">
+                            <a class="text-muted" href="{% url 'products:products' %}?category={{ product.category.name }}">
+                                <i class="fas fa-tag mr-1"></i>{{ product.category.name }}
+                            </a>
+                        </p>
                     {% endif %}
                     <p class="mt-3">{{ product.description }}</p>
                     <!-- Display Average Rating -->
                     <p class="mt-3"><strong>Average Rating:</strong> {{ avg_rating|default:"No ratings yet" }}</p>
                     
-                    <!-- Display Individual Reviews -->
-                    {% if reviews %}
-                    <ul class="list-unstyled">
-                        {% for review in reviews %}
-                        <li>{{ review.stars }} stars - {{ review.comment }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
-                    
                     <!-- Review Form -->
                     {% for review in reviews %}
-                        <li>
-                            {{ review.stars }} stars - {{ review.comment }}
+                        <div class="mb-3">
                             {% if review.user == request.user %}
-                                <a href="{% url 'products:edit_review' review.id %}" class="btn btn-primary btn-sm">Edit Review</a>
+                                <a href="{% url 'products:edit_review' review.id %}" class="btn btn-primary btn-sm mr-1">Edit Review</a>
                                 <a href="{% url 'products:delete_review' review.id %}" class="btn btn-danger btn-sm">Delete Review</a>
                             {% endif %}
-                        </li>
+                        </div>
                     {% endfor %}
                     <form method="post" action="{% url 'products:add_review' product.id %}">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <button type="submit" class="btn btn-primary">Submit Review</button>
+                        <button type="submit" class="btn btn-primary btn-sm mt-2">Submit Review</button>
                     </form>
                     <form class="form" action="{% url 'bag:add_to_bag' product.id %}" method="POST">
                         {% csrf_token %}
@@ -133,13 +118,35 @@
                             <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Wishlist">
                         </div>
                     </form>
+                    
+                    <!-- Display Individual Reviews -->
+                    {% if reviews %}
+                        <div class="mt-3">
+                            <h5>Customer Reviews</h5>
+                            <ul class="list-unstyled mt-3">
+                                {% for review in reviews %}
+                                    <li class="border-bottom py-3">
+                                        <p>{{ review.comment }}</p>
+                                        <div>
+                                            <!-- Full stars -->
+                                            {% for _ in review.full_stars %}
+                                                <i class="fas fa-star text-warning"></i>
+                                            {% endfor %}
+                                            <!-- Empty stars -->
+                                            {% for _ in review.empty_stars %}
+                                                <i class="far fa-star text-warning"></i>
+                                            {% endfor %}
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% else %}
+                        <p>No reviews yet. Be the first to review!</p>
+                    {% endif %}
+                    
                 </div>
             </div>
         </div>
     </div>
-{% endblock %}
-
-{% block postloadjs %}
-{{ block.super }}
-{% include 'products/includes/quantity_input_script.html' %}
 {% endblock %}

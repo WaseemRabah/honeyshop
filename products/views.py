@@ -10,6 +10,8 @@ from django.views.generic.edit import UpdateView, DeleteView
 from django.db.models.functions import Lower 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
+
 
 
 """ A view to show all products, including sorting and search queries """
@@ -191,19 +193,19 @@ class DeleteReviewView(LoginRequiredMixin, DeleteView):
     def delete(self, request, *args, **kwargs):
         review = self.get_object()
         product = review.product
-        
-        # Get all reviews for the product except the one being deleted
-        remaining_reviews = Review.objects.filter(product=product).exclude(pk=review.pk)
-        
-        # Recalculate the average rating
-        new_avg_rating = remaining_reviews.aggregate(Avg('stars'))['stars__avg']
-        
+
+        # Delete the review
+        super().delete(request, *args, **kwargs)
+
+        # Recalculate the average rating after deleting the review
+        remaining_reviews = Review.objects.filter(product=product)
+        new_avg_rating = remaining_reviews.aggregate(Avg('stars'))['stars__avg'] or 0
+
         # Update the product's average rating
         product.avg_rating = new_avg_rating
         product.save()
-        
-        messages.success(request, 'Your review has been deleted.')
-        return super().delete(request, *args, **kwargs)
+
+        return HttpResponseRedirect(self.get_success_url())
     
 def review_detail(request, pk):
     review = get_object_or_404(Review, pk=pk)

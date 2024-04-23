@@ -166,16 +166,26 @@ body {
 .footer {
     height: 1.5em;
     position: fixed;
-    left: 0;
+    left: -25%; 
     bottom: 0;
-    width: 100%;
-    background-color: rgb(18, 17, 17);
+    width: 25%;
+    background-color: rgba(18, 17, 17, 0.7);
     color: white;
     text-align: center;
+    animation: slideRight 10s linear infinite; 
 }
 
-.footer a{
+.footer a {
     color: aliceblue;
+}
+
+@keyframes slideRight {
+    0% {
+        left: -25%; 
+    }
+    100% {
+        left: 100%; 
+    }
 }
 
 
@@ -216,6 +226,11 @@ body {
 
 /* Media query for screens with a maximum width of 576 pixels (typically mobile screens) */
 @media (max-width: 576px) {
+
+    .footer{
+        width: 75%;
+    }
+
     #delivery-banner {
         height: auto; 
     }
@@ -226,5 +241,12 @@ body {
 
     #delivery-banner h4 {
         font-size: 14px; 
+    }
+}
+
+
+@media (max-width: 576px) {
+    .footer{
+        width: 75%;
     }
 }

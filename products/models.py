@@ -44,8 +44,20 @@ class Review(models.Model):
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
         
-        
         avg_rating = Review.objects.filter(product=self.product).aggregate(Avg('stars'))['stars__avg']
         self.product.rating = avg_rating
         self.product.save()
+    
+    def delete(self, *args, **kwargs):
+        product = self.product
+        super().delete(*args, **kwargs)
         
+        remaining_reviews = Review.objects.filter(product=product)
+        avg_rating = remaining_reviews.aggregate(Avg('stars'))['stars__avg']
+        
+        if avg_rating is not None:
+            product.rating = avg_rating
+        else:
+            product.rating = None
+        
+        product.save()

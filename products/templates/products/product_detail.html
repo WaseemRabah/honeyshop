@@ -56,13 +56,13 @@
                             <label for="stars"><strong>Stars:</strong></label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <button type="button" class="decrement-qty btn btn-black rounded-0">
+                                    <button type="button" class="decrement-stars btn btn-black rounded-0">
                                         <span class="icon">
                                             <i class="fas fa-minus"></i>
                                         </span>
                                     </button>
                                 </div>
-                                <input type="number" name="stars" id="stars" class="form-control qty_input" value="1" min="1" max="5" style="width: 80px;">
+                                <input type="number" name="stars" id="stars" class="form-control qty_input" value="5" min="1" max="5" style="width: 80px;">
                                 <div class="input-group-append">
                                     <button type="button" class="increment-stars btn btn-black rounded-0">
                                         <span class="icon">
@@ -240,16 +240,59 @@
             const starsInput = document.getElementById('stars');
             const incrementStarsBtn = document.querySelector('.increment-stars');
             const decrementStarsBtn = document.querySelector('.decrement-stars');
-    
-            incrementStarsBtn.addEventListener('click', function () {
+        
+            // Ensure the event listeners are correctly set up
+            incrementStarsBtn.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent default action
                 if (parseInt(starsInput.value) < 5) {
                     starsInput.value = parseInt(starsInput.value) + 1;
                 }
             });
-    
-            decrementStarsBtn.addEventListener('click', function () {
-                if (parseInt(starsInput.value) > 0) {
+        
+            decrementStarsBtn.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent default action
+                if (parseInt(starsInput.value) > 1) {
                     starsInput.value = parseInt(starsInput.value) - 1;
+                }
+            });
+        
+            // Add event listeners for quantity increment and decrement buttons
+            const quantityInput = document.getElementById('id_qty_' + product.id); // Assuming product.id is available
+            const incrementQtyBtn = document.getElementById('increment-qty_' + product.id);
+            const decrementQtyBtn = document.getElementById('decrement-qty_' + product.id);
+        
+            incrementQtyBtn.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent default action
+                if (parseInt(quantityInput.value) < 99) {
+                    quantityInput.value = parseInt(quantityInput.value) + 1;
+                }
+            });
+        
+            decrementQtyBtn.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent default action
+                if (parseInt(quantityInput.value) > 1) {
+                    quantityInput.value = parseInt(quantityInput.value) - 1;
+                }
+            });
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            // Quantity increment and decrement buttons
+            const incrementQtyBtn = document.getElementById('increment-qty_{{ product.id }}');
+            const decrementQtyBtn = document.getElementById('decrement-qty_{{ product.id }}');
+            const quantityInput = document.getElementById('id_qty_{{ product.id }}');
+        
+            // Prevent form submission when quantity buttons are clicked
+            incrementQtyBtn.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent default form submission
+                if (parseInt(quantityInput.value) < 99) {
+                    quantityInput.value = parseInt(quantityInput.value) + 1;
+                }
+            });
+        
+            decrementQtyBtn.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent default form submission
+                if (parseInt(quantityInput.value) > 1) {
+                    quantityInput.value = parseInt(quantityInput.value) - 1;
                 }
             });
         });

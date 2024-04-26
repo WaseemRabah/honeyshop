@@ -50,9 +50,33 @@
                             {% endif %}
                         </div>
                     {% endfor %}
-                    <form method="post" action="{% url 'products:add_review' product.id %}">
+                    <form class="form form-review" method="post" action="{% url 'products:add_review' product.id %}">
                         {% csrf_token %}
-                        {{ form.as_p }}
+                        <div class="form-group">
+                            <label for="stars"><strong>Stars:</strong></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="decrement-qty btn btn-black rounded-0">
+                                        <span class="icon">
+                                            <i class="fas fa-minus"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                                <input type="number" name="stars" id="stars" class="form-control qty_input" value="1" min="1" max="5" style="width: 80px;">
+                                <div class="input-group-append">
+                                    <button type="button" class="increment-stars btn btn-black rounded-0">
+                                        <span class="icon">
+                                            <i class="fas fa-plus"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Comment Section -->
+                        <div class="form-group">
+                            <label for="comment"><strong>Comment:</strong></label>
+                            <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+                        </div>
                         <button type="submit" class="btn btn-primary btn-sm mt-2">Submit Review</button>
                     </form>
                     <form class="form" action="{% url 'bag:add_to_bag' product.id %}" method="POST">
@@ -149,4 +173,85 @@
             </div>
         </div>
     </div>
+    <style>
+        .form-review {
+            margin-top: 30px;
+            width: 50%;
+        }
+        
+        .form-review label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .form-review input[type="text"],
+        .form-review textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        .form-review textarea {
+            height: 150px;
+        }
+        
+        .form-review input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        
+        .form-review input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Styling for stars field */
+        .stars-field {
+            margin-bottom: 15px;
+        }
+        .stars-input {
+            display: flex;
+            align-items: center;
+        }
+        .stars-input button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        .stars-input input {
+            flex: 1;
+            margin: 0 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const starsInput = document.getElementById('stars');
+            const incrementStarsBtn = document.querySelector('.increment-stars');
+            const decrementStarsBtn = document.querySelector('.decrement-stars');
+    
+            incrementStarsBtn.addEventListener('click', function () {
+                if (parseInt(starsInput.value) < 5) {
+                    starsInput.value = parseInt(starsInput.value) + 1;
+                }
+            });
+    
+            decrementStarsBtn.addEventListener('click', function () {
+                if (parseInt(starsInput.value) > 0) {
+                    starsInput.value = parseInt(starsInput.value) - 1;
+                }
+            });
+        });
+    </script>
 {% endblock %}

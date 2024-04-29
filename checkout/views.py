@@ -7,6 +7,7 @@ from .models import Order, OrderLineItem
 from products.models import Product
 from bag.contexts import bag_contents
 from django.views.decorators.http import require_POST
+from django.core.mail import send_mail
 
 import stripe
 import json
@@ -119,6 +120,18 @@ def checkout(request):
 def checkout_success(request, order_number):
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
+
+    # Calculate total price
+    total_price = order.grand_total 
+
+    # Send email confirmation
+    subject = 'Order Confirmation'
+    message = f'Your order has been successfully processed! Your order number is {order_number}. \
+        You have been charged ${total_price:.2f}.'
+    from_email = 'waseem.96.ra@gmail.com'  
+    recipient_email = order.email  
+    send_mail(subject, message, from_email, [recipient_email])
+
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')

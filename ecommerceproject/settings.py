@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+import cloudinary_storage
 
 load_dotenv()
 
@@ -28,8 +29,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cloudinary_storage',
     'cloudinary',
+    'cloudinary_storage',
     'products',
     'orders',
     'wishlist',
@@ -103,9 +104,9 @@ DATABASES = {
 
 # Cloudinary settings
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get("CLOUD_NAME"),
-    'API_KEY': os.environ.get("API_KEY"),
-    'API_SECRET': os.environ.get("API_SECRET"),
+    'CLOUD_NAME': 'doaqzwmlv',
+    'API_KEY': '218989358578492',
+    'API_SECRET': 'IV_X8CaFw80XjHTdExu1LcuUKYM',
 }
 
 STATIC_URL = '/static/'
@@ -113,7 +114,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
-DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 

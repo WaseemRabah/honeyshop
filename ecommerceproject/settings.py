@@ -104,9 +104,9 @@ DATABASES = {
 
 # Cloudinary settings
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'doaqzwmlv',
-    'API_KEY': '218989358578492',
-    'API_SECRET': 'IV_X8CaFw80XjHTdExu1LcuUKYM',
+    'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
+    'API_KEY': os.environ.get('API_KEY'),
+    'API_SECRET': os.environ.get('API_SECRET'),
 }
 
 STATIC_URL = '/static/'

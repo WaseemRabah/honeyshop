@@ -1,6 +1,71 @@
 {% extends "base.html" %}
 {% load static %}
 
+{%block extra_css%}
+    <style>
+        .form-review {
+            margin-top: 30px;
+            width: 50%;
+        }
+        
+        .form-review label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .form-review input[type="text"],
+        .form-review textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        .form-review textarea {
+            height: 150px;
+        }
+        
+        .form-review input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        
+        .form-review input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Styling for stars field */
+        .stars-field {
+            margin-bottom: 15px;
+        }
+        .stars-input {
+            display: flex;
+            align-items: center;
+        }
+        .stars-input button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        .stars-input input {
+            flex: 1;
+            margin: 0 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-align: center;
+        }
+    </style>
+{%endblock%}
+
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
@@ -174,68 +239,7 @@
             </div>
         </div>
     </div>
-    <style>
-        .form-review {
-            margin-top: 30px;
-            width: 50%;
-        }
-        
-        .form-review label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        
-        .form-review input[type="text"],
-        .form-review textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        
-        .form-review textarea {
-            height: 150px;
-        }
-        
-        .form-review input[type="submit"] {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-        
-        .form-review input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-
-        /* Styling for stars field */
-        .stars-field {
-            margin-bottom: 15px;
-        }
-        .stars-input {
-            display: flex;
-            align-items: center;
-        }
-        .stars-input button {
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            line-height: 1;
-        }
-        .stars-input input {
-            flex: 1;
-            margin: 0 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            text-align: center;
-        }
-    </style>
+    
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const starsInput = document.getElementById('stars');

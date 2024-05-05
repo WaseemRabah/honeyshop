@@ -4,6 +4,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from .views import handler404, handler500
 
+
+handler404 = 'ecommerceproject.views.handler404'
+handler500 = 'ecommerceproject.views.handler500'
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('products/', include(('products.urls', 'products'))),
@@ -16,6 +21,3 @@ urlpatterns = [
     path('accounts/', include('allauth.account.urls')),
     path('newsletter/', include('newsletter.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-handler404 = 'ecommerceproject.views.handler404'
-handler500 = 'ecommerceproject.views.handler500'

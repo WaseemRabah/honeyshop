@@ -20,6 +20,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = os.environ.get("DEBUG") == "True"
 
+handler404 = 'ecommerceproject.views.handler404'
+handler500 = 'ecommerceproject.views.handler500'
+
 ALLOWED_HOSTS = ['honeyshop-58be54febc57.herokuapp.com', '127.0.0.1', 'localhost', 'localhost:8000']
 
 INSTALLED_APPS = [

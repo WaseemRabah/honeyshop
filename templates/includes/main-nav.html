@@ -1,31 +1,36 @@
 <div class="collapse navbar-collapse" id="main-nav">
     <ul class="navbar-nav w-auto mx-auto">
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 All Products
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
                 <a href="{% url 'products:products' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
                 <a href="{% url 'products:products' %}?sort=rating&direction=desc" class="dropdown-item ">By Rating</a>
-                <a href="{% url 'products:products' %}?sort=category&direction=asc" class="dropdown-item ">By Category</a>
+                <a href="{% url 'products:products' %}?sort=category&direction=asc" class="dropdown-item ">By
+                    Category</a>
                 <a href="{% url 'products:products' %}" class="dropdown-item">All Products</a>
             </div>
         </li>
 
         <li class="nav-item">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'products:products' %}?category=raw_honey" role="button">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5"
+                href="{% url 'products:products' %}?category=raw_honey" role="button">
                 Raw Honey
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'products:products' %}?category=pure_honey" role="button">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5"
+                href="{% url 'products:products' %}?category=pure_honey" role="button">
                 Pure Honey
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="logo-font font-weight-bold nav-link text-black" href="{% url 'products:products' %}?category=special_offers"" role="button">
+            <a class="logo-font font-weight-bold nav-link text-black"
+                href="{% url 'products:products' %}?category=special_offers"" role=" button">
                 Special Offers
             </a>
         </li>

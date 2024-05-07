@@ -119,7 +119,7 @@ The testing process ensured that all features and functionalities of the e-comme
 - I have had errors during testing when passing through the official [W3C](https://validator.w3.org/) validator, but due to lack of time i was not able to fix them.
 i'm gonna work on them later on.
 
-- [Home app HTML validation report](documentation/home-page-validator.png)
+- [Home app HTML validation report](documentation/home-validator.png)
 
 - [Products app HTML validation report](documentation/products-validator.png)
 

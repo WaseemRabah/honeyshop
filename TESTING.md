@@ -119,13 +119,15 @@ The testing process ensured that all features and functionalities of the e-comme
 - I have had errors during testing when passing through the official [W3C](https://validator.w3.org/) validator, but due to lack of time i was not able to fix them.
 i'm gonna work on them later on.
 
-- [Bag app HTML validation report](documentation/bag-erros.png)
+- [Home app HTML validation report](documentation/home-page-validator.png)
 
-- [Checkout app HTML validation report](documentation/checkout-errors.png)
+- [Products app HTML validation report](documentation/products-validator.png)
 
-- [Home app HTML validation report](documentation/home-errors.png)
+- [Bag app HTML validation report](documentation/bag-validator.png)
 
-- [Wishlist app HTML validation report](documentation/wishlist-errors.png)
+- [Checkout app HTML validation report](documentation/checkout-validator.png)
+
+- [Wishlist app HTML validation report](documentation/wishlist-validator.png)
 
 
 ### CSS Validation:
